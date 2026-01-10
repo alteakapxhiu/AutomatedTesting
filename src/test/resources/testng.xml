@@ -1,0 +1,73 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<!--
+    TestNG Suite Configuration
+
+    This file defines how tests are organized and executed
+    - Suite: YelpCamp Automation Test Suite
+    - Test groups: Authentication, Campgrounds, Reviews
+    - Listeners: TestListener for screenshot capture on failure
+-->
+
+<suite name="YelpCamp Automation Test Suite" verbose="1">
+
+    <!--
+        Listeners - Classes that listen to test events
+        TestListener will capture screenshots on test failure
+    -->
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+    </listeners>
+
+    <!--
+        Test 1: Authentication Tests
+        Tests for Login, Register, Logout functionality
+    -->
+    <test name="Authentication Tests">
+        <classes>
+            <class name="tests.AuthenticationTests">
+                <!-- You can specify which methods to run -->
+                <!--
+                <methods>
+                    <include name="testSuccessfulLogin"/>
+                    <include name="testSuccessfulRegistration"/>
+                </methods>
+                -->
+            </class>
+        </classes>
+    </test>
+
+    <!--
+        Test 2: Campground Tests
+        Tests for Create, View, Edit, Delete campgrounds
+    -->
+    <test name="Campground Tests">
+        <classes>
+            <class name="tests.CampgroundTests"/>
+        </classes>
+    </test>
+
+    <!--
+        Test 3: Review Tests
+        Tests for adding and viewing reviews
+    -->
+    <test name="Review Tests">
+        <classes>
+            <class name="tests.ReviewTests"/>
+        </classes>
+    </test>
+
+    <!--
+        PARALLEL EXECUTION (Optional)
+        Uncomment to run tests in parallel
+
+        <test name="All Tests Parallel" parallel="classes" thread-count="3">
+            <classes>
+                <class name="tests.AuthenticationTests"/>
+                <class name="tests.CampgroundTests"/>
+                <class name="tests.ReviewTests"/>
+            </classes>
+        </test>
+    -->
+
+</suite>

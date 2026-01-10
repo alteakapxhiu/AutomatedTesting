@@ -1,0 +1,11 @@
+pages\BasePage.class
+pages\ShoppingCartPage.class
+pages\ProductListPage.class
+pages\LoginPage.class
+pages\HomePage.class
+utils\WaitHelper.class
+utils\ConfigReader.class
+pages\RegisterPage.class
+utils\ScreenshotUtil.class
+pages\WishlistPage.class
+utils\DriverManager.class
