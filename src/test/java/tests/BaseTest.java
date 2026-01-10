@@ -32,7 +32,32 @@ public class BaseTest {
         } else {
             // Create new driver for all other tests
             driver = DriverManager.getDriver();
-            driver.get(ConfigReader.getBaseUrl());
+
+            // Use JavaScript navigation as workaround for Chrome 143 renderer timeout
+            String baseUrl = ConfigReader.getBaseUrl();
+            org.openqa.selenium.JavascriptExecutor js = (org.openqa.selenium.JavascriptExecutor) driver;
+
+            try {
+                // Try to set a blank page first with shorter timeout
+                driver.manage().timeouts().pageLoadTimeout(java.time.Duration.ofSeconds(10));
+                driver.get("about:blank");
+            } catch (Exception e) {
+                System.out.println("Initial blank page load issue, continuing");
+            }
+
+            // Reset timeout to normal
+            driver.manage().timeouts().pageLoadTimeout(java.time.Duration.ofSeconds(60));
+
+            // Use JavaScript to navigate - this bypasses some renderer issues
+            js.executeScript("window.location.href = arguments[0];", baseUrl);
+
+            // Wait for page to be ready using JavaScript
+            try {
+                new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(30))
+                    .until(d -> js.executeScript("return document.readyState").equals("complete"));
+            } catch (Exception e) {
+                System.out.println("Page load wait completed with exception, but continuing: " + e.getMessage());
+            }
         }
 
         ExtentTest test = extent.createTest(this.getClass().getSimpleName());

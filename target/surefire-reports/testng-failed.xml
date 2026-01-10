@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Surefire suite]" verbose="0">
-  <test thread-count="5" name="Surefire test(failed)" verbose="0">
+<suite name="Failed suite [Tealium E-commerce Automation Test Suite]" guice-stage="DEVELOPMENT" verbose="0">
+  <listeners>
+    <listener class-name="listeners.TestListener"/>
+  </listeners>
+  <test thread-count="5" name="E-commerce Tests(failed)" verbose="0">
     <classes>
       <class name="tests.EcommerceTests">
         <methods>
@@ -9,11 +12,12 @@
           <include name="loginBeforeEachTest"/>
           <include name="setupSuite"/>
           <include name="testCheckSorting"/>
+          <include name="testEmptyShoppingCart"/>
           <include name="testShoppingCart"/>
           <include name="tearDown"/>
           <include name="setup"/>
         </methods>
       </class> <!-- tests.EcommerceTests -->
     </classes>
-  </test> <!-- Surefire test(failed) -->
-</suite> <!-- Failed suite [Surefire suite] -->
+  </test> <!-- E-commerce Tests(failed) -->
+</suite> <!-- Failed suite [Tealium E-commerce Automation Test Suite] -->

@@ -12,8 +12,8 @@
           <include name="loginBeforeEachTest"/>
           <include name="setupSuite"/>
           <include name="testCheckSorting"/>
-          <include name="testShoppingCart"/>
           <include name="testEmptyShoppingCart"/>
+          <include name="testShoppingCart"/>
           <include name="tearDown"/>
           <include name="setup"/>
         </methods>

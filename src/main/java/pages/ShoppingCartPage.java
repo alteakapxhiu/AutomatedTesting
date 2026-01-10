@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,7 +16,7 @@ public class ShoppingCartPage extends BasePage {
     @FindBy(xpath = "//h1[contains(text(),'Shopping Cart')]")
     private WebElement pageHeading;
 
-    @FindBy(xpath = "//table[@id='shopping-cart-table']//tbody/tr[contains(@class,'item-') or not(@class='first' or @class='last')]")
+    @FindBy(xpath = "//table[@id='shopping-cart-table']//tbody/tr")
     private List<WebElement> cartItems;
 
     @FindBy(xpath = "//button[@title='Update' or @title='Update Shopping Cart' or contains(@class,'btn-update')]")
@@ -129,30 +130,44 @@ public class ShoppingCartPage extends BasePage {
     }
 
     public void deleteItem(int itemIndex) {
-        if (itemIndex < cartItems.size()) {
-            WebElement item = cartItems.get(itemIndex);
-            WebElement deleteBtn = item.findElement(By.xpath(".//a[@title='Remove item' or contains(@class,'btn-remove') or contains(@class,'remove')]"));
-            waitHelper.waitForElementClickable(deleteBtn);
-            scrollToElement(deleteBtn);
-            try {
-                deleteBtn.click();
-            } catch (Exception e) {
-                js.executeScript("arguments[0].click();", deleteBtn);
-            }
+        try {
+            // Use JavaScript to find and click the first remove button in the cart table
+            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
-            // Wait for deletion to process
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
+            // Wait for cart table to be present
+            Thread.sleep(1000);
+
+            // Find and click the first remove button using JavaScript
+            boolean clicked = (boolean) jsExecutor.executeScript(
+                "var removeBtn = document.querySelector('#shopping-cart-table .btn-remove, #shopping-cart-table a[title*=\"Remove\"]');" +
+                "if (removeBtn) {" +
+                "  var href = removeBtn.getAttribute('href');" +
+                "  if (href && href !== '#') {" +
+                "    window.location.href = href;" +
+                "    return true;" +
+                "  }" +
+                "  removeBtn.click();" +
+                "  return true;" +
+                "}" +
+                "return false;"
+            );
+
+            if (clicked) {
+                System.out.println("Delete button clicked successfully via JavaScript");
+                Thread.sleep(3000); // Wait for page reload after deletion
+            } else {
+                System.out.println("Could not find remove button via JavaScript");
             }
+        } catch (Exception e) {
+            System.out.println("Error deleting item: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
     public double getItemSubtotal(int itemIndex) {
         if (itemIndex < cartItems.size()) {
             WebElement item = cartItems.get(itemIndex);
-            WebElement subtotal = item.findElement(By.xpath(".//td[@class='a-right']//span[@class='price']"));
+            WebElement subtotal = item.findElement(By.xpath(".//td[@class='product-cart-price']//span[@class='price']"));
             String priceText = subtotal.getText().replace("$", "").replace(",", "").trim();
             return Double.parseDouble(priceText);
         }

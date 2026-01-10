@@ -35,6 +35,11 @@ public class DriverManager {
                 chromeOptions.addArguments("--start-maximized");
                 chromeOptions.addArguments("--disable-notifications");
                 chromeOptions.addArguments("--remote-allow-origins=*");
+                chromeOptions.addArguments("--no-sandbox");
+                chromeOptions.addArguments("--disable-dev-shm-usage");
+                chromeOptions.addArguments("--disable-gpu");
+                chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
+                chromeOptions.setPageLoadStrategy(org.openqa.selenium.PageLoadStrategy.NONE);
                 webDriver = new ChromeDriver(chromeOptions);
                 break;
 
