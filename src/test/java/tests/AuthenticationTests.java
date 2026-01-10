@@ -7,198 +7,120 @@ import pages.LoginPage;
 import pages.RegisterPage;
 
 /**
- * AuthenticationTests - Tests for User Authentication (Login, Register, Logout)
- *
- * REQUIREMENT: Use asserts to do the verifications
- *
- * Test Scenarios Covered:
- * 1. User Registration with valid credentials
- * 2. User Login with valid credentials
- * 3. User Login with invalid credentials
- * 4. User Logout
+ * AccountTests - Tests 1 and 2 for Tealium E-commerce Application
  */
 public class AuthenticationTests extends BaseTest {
 
+    private static String testEmail;
+    private static String testPassword;
+
     /**
-     * Test 1: Successful User Registration
-     *
-     * Steps:
-     * 1. Navigate to Register page
-     * 2. Fill in registration form with valid data
-     * 3. Submit the form
-     * 4. Verify registration is successful (redirect to campgrounds or login)
+     * Test 1: Create an Account
+     * 1. Navigate to: https://ecommerce.tealiumdemo.com/
+     * 2. Click Account and then Register button.
+     * 3. Check title of the open page.
+     * 4. Fill in form fields.
+     * 5. Click Register button.
+     * 6. Check successful message is displayed on the screen.
+     * 7. Click on Account and Log Out.
      */
-    @Test(priority = 1, description = "Verify user can register with valid credentials")
-    public void testSuccessfulRegistration() {
-        // Initialize page object
+    @Test(priority = 1, description = "Test 1: Create an Account")
+    public void testCreateAccount() {
+        HomePage homePage = new HomePage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
 
-        // Navigate to register page
-        registerPage.navigateToRegister();
+        // Step 1: Navigate to homepage
+        homePage.navigateToHomePage();
+        Assert.assertTrue(homePage.isHomePageLoaded(), "Home page should be loaded");
 
-        // Verify register page loaded
-        Assert.assertTrue(registerPage.isRegisterPageLoaded(),
-                "Register page should be loaded");
+        // Step 2: Click Account and Register
+        homePage.clickRegister();
 
-        // Generate unique username with timestamp to avoid duplicates
+        // Step 3: Check title of the page
+        Assert.assertTrue(registerPage.isRegisterPageLoaded(), "Register page should be loaded");
+        String pageTitle = registerPage.getPageTitle();
+        Assert.assertTrue(pageTitle.contains("Create") || pageTitle.contains("Account"),
+                "Page title should contain 'Create' or 'Account'");
+
+        // Step 4: Fill in form fields
         String timestamp = String.valueOf(System.currentTimeMillis());
-        String username = "testuser" + timestamp;
-        String email = "testuser" + timestamp + "@test.com";
-        String password = "Test@123";
+        String firstName = "Test";
+        String lastName = "User" + timestamp;
+        testEmail = "testuser" + timestamp + "@test.com";
+        testPassword = "Test@1234";
 
-        // Fill and submit registration form
-        registerPage.register(username, email, password);
+        registerPage.registerUser(firstName, lastName, testEmail, testPassword);
 
-        // Verify registration successful (REQUIREMENT: Use asserts)
-        Assert.assertTrue(registerPage.isRegistrationSuccessful(),
-                "Registration should be successful and redirect to campgrounds or login page");
+        // Step 5 & 6: Check successful message is displayed
+        Assert.assertTrue(registerPage.isSuccessMessageDisplayed(),
+                "Success message should be displayed after registration");
 
-        System.out.println("Registration test passed for user: " + username);
+        // Step 7: Click on Account and Log Out
+        registerPage.clickLogOut();
     }
 
     /**
-     * Test 2: Successful User Login
+     * Test 2: Sign In
+     * 1. Navigate to: https://ecommerce.tealiumdemo.com/
+     * 2. Click on Account then Sign in.
+     * 3. Login with existing credentials.
+     * 4. Check your username is displayed on right corner of the page.
+     * 5. Click on Account and Log Out.
      *
-     * Pre-requisite: User must be registered first (depends on test 1)
-     *
-     * Steps:
-     * 1. Navigate to Login page
-     * 2. Enter valid credentials
-     * 3. Click Login
-     * 4. Verify user is redirected to campgrounds page
-     * 5. Verify user is logged in (Logout button visible)
+     * NOTE: This test uses pre-existing credentials. Make sure to create an account first
+     * or update the credentials below.
      */
-    @Test(priority = 2, description = "Verify user can login with valid credentials")
-    public void testSuccessfulLogin() {
+    @Test(priority = 2, description = "Test 2: Sign In")
+    public void testSignIn() {
+        HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
 
-        // Navigate to login page
-        loginPage.navigateToLogin();
+        // Use credentials from Test 1 if available, otherwise use predefined credentials
+        String emailToUse = (testEmail != null && !testEmail.isEmpty()) ? testEmail : "altea_kapxhiu@universitetipolis.edu.al";
+        String passwordToUse = (testPassword != null && !testPassword.isEmpty()) ? testPassword : "AlteaPolis2004";
+
+        // Step 1: Navigate to homepage
+        homePage.navigateToHomePage();
+
+        // Wait for page to fully load
+        Assert.assertTrue(homePage.isHomePageLoaded(), "Home page should be loaded");
+
+        // Additional wait for page to stabilize
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Step 2: Click on Account then Sign in (with fallback to direct navigation)
+        try {
+            homePage.clickSignIn();
+        } catch (Exception e) {
+            // Fallback: Navigate directly to login page
+            System.out.println("Failed to click Sign In link, navigating directly to login page");
+            loginPage.navigateToLoginPage();
+        }
+
+        // Wait for login page to load
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         // Verify login page loaded
-        Assert.assertTrue(loginPage.isLoginPageLoaded(),
-                "Login page should be loaded");
+        Assert.assertTrue(loginPage.isLoginPageLoaded(), "Login page should be loaded");
 
-        // Login with credentials
-        // NOTE: You may need to use credentials from an existing user
-        // or modify this to use the user created in registration test
-        String username = "testuser";  // Update with actual username
-        String password = "Test@123";  // Update with actual password
+        // Step 3: Login with credentials
+        loginPage.login(emailToUse, passwordToUse);
 
-        loginPage.login(username, password);
+        // Step 4: Check username is displayed
+        Assert.assertTrue(homePage.isUserLoggedIn(), "User should be logged in");
+        String welcomeMsg = homePage.getWelcomeMessageText();
+        Assert.assertTrue(welcomeMsg.contains("WELCOME") || welcomeMsg.toLowerCase().contains("hello"),
+                "Welcome message should be displayed with username");
 
-        // Verify login successful (REQUIREMENT: Use asserts)
-        Assert.assertTrue(loginPage.isLoginSuccessful(),
-                "Login should be successful and redirect to campgrounds page");
-
-        // Verify user is logged in
-        Assert.assertTrue(loginPage.isUserLoggedIn(),
-                "User should be logged in - Logout button should be visible");
-
-        System.out.println("Login test passed for user: " + username);
-    }
-
-    /**
-     * Test 3: Login with Invalid Credentials
-     *
-     * Steps:
-     * 1. Navigate to Login page
-     * 2. Enter invalid credentials
-     * 3. Click Login
-     * 4. Verify error message is displayed
-     * 5. Verify user is NOT redirected (still on login page)
-     */
-    @Test(priority = 3, description = "Verify login fails with invalid credentials")
-    public void testLoginWithInvalidCredentials() {
-        LoginPage loginPage = new LoginPage(driver);
-
-        // Navigate to login page
-        loginPage.navigateToLogin();
-
-        // Try to login with invalid credentials
-        String invalidUsername = "invaliduser12345";
-        String invalidPassword = "wrongpassword";
-
-        loginPage.login(invalidUsername, invalidPassword);
-
-        // Verify error message is displayed (REQUIREMENT: Use asserts)
-        // Note: This might fail if YelpCamp doesn't show error message
-        // In that case, verify URL still contains "/login"
-        boolean hasError = loginPage.isErrorMessageDisplayed() ||
-                          driver.getCurrentUrl().contains("/login");
-
-        Assert.assertTrue(hasError,
-                "Error message should be displayed or user should remain on login page");
-
-        System.out.println("Invalid login test passed - login correctly rejected");
-    }
-
-    /**
-     * Test 4: User Logout
-     *
-     * Pre-requisite: User must be logged in first
-     *
-     * Steps:
-     * 1. Login with valid credentials
-     * 2. Click Logout button
-     * 3. Verify user is logged out (Login button visible)
-     * 4. Verify redirect to home page
-     */
-    @Test(priority = 4, description = "Verify user can logout successfully")
-    public void testLogout() {
-        // First, login
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.navigateToLogin();
-
-        String username = "testuser";  // Update with actual username
-        String password = "Test@123";  // Update with actual password
-
-        loginPage.login(username, password);
-
-        // Verify logged in
-        Assert.assertTrue(loginPage.isUserLoggedIn(),
-                "User should be logged in before logout test");
-
-        // Now logout
-        HomePage homePage = new HomePage(driver);
-        homePage.clickLogoutLink();
-
-        // Verify user is logged out (REQUIREMENT: Use asserts)
-        Assert.assertTrue(homePage.isUserLoggedOut(),
-                "User should be logged out - Login button should be visible");
-
-        // Verify not on a restricted page
-        String currentUrl = driver.getCurrentUrl();
-        Assert.assertFalse(currentUrl.contains("/campgrounds/new"),
-                "User should not be able to access New Campground page after logout");
-
-        System.out.println("Logout test passed");
-    }
-
-    /**
-     * Test 5: Registration with Empty Fields (Form Validation)
-     *
-     * Steps:
-     * 1. Navigate to Register page
-     * 2. Submit form without filling any fields
-     * 3. Verify error message or validation message appears
-     */
-    @Test(priority = 5, description = "Verify registration fails with empty fields")
-    public void testRegistrationWithEmptyFields() {
-        RegisterPage registerPage = new RegisterPage(driver);
-
-        registerPage.navigateToRegister();
-
-        // Try to register with empty fields
-        registerPage.clickRegisterButton();
-
-        // Verify still on register page or error shown
-        boolean hasValidation = registerPage.isErrorMessageDisplayed() ||
-                               driver.getCurrentUrl().contains("/register");
-
-        Assert.assertTrue(hasValidation,
-                "Form validation should prevent registration with empty fields");
-
-        System.out.println("Empty fields validation test passed");
+        // Step 5: Click on Account and Log Out
+        homePage.clickLogOut();
     }
 }

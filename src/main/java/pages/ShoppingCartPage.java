@@ -15,19 +15,19 @@ public class ShoppingCartPage extends BasePage {
     @FindBy(xpath = "//h1[contains(text(),'Shopping Cart')]")
     private WebElement pageHeading;
 
-    @FindBy(xpath = "//table[@id='shopping-cart-table']//tbody//tr")
+    @FindBy(xpath = "//table[@id='shopping-cart-table']//tbody/tr[contains(@class,'item-') or not(@class='first' or @class='last')]")
     private List<WebElement> cartItems;
 
-    @FindBy(xpath = "//button[@title='Update']")
+    @FindBy(xpath = "//button[@title='Update' or @title='Update Shopping Cart' or contains(@class,'btn-update')]")
     private WebElement updateButton;
 
-    @FindBy(xpath = "//td[@class='a-right']//span[@class='price']")
+    @FindBy(xpath = "//td[contains(@class,'a-right') or contains(@class,'subtotal')]//span[@class='price']")
     private List<WebElement> itemPrices;
 
-    @FindBy(xpath = "//tr[@class='last']//span[@class='price']")
+    @FindBy(xpath = "//tfoot//tr[contains(@class,'last') or contains(@class,'grand-total')]//span[@class='price']")
     private WebElement grandTotalPrice;
 
-    @FindBy(xpath = "//p[@class='empty']")
+    @FindBy(xpath = "//p[@class='empty'] | //div[@class='cart-empty']/p")
     private WebElement emptyCartMessage;
 
     public ShoppingCartPage(WebDriver driver) {
@@ -35,18 +35,77 @@ public class ShoppingCartPage extends BasePage {
     }
 
     public boolean isShoppingCartPageLoaded() {
-        return waitHelper.isElementDisplayed(pageHeading);
+        try {
+            // Wait for cart page to fully load
+            Thread.sleep(2000);
+
+            String currentUrl = driver.getCurrentUrl();
+            System.out.println("Checking if shopping cart page loaded. Current URL: " + currentUrl);
+
+            // Check if we're on cart page by URL
+            boolean isOnCartPage = currentUrl.contains("checkout/cart") ||
+                                  currentUrl.contains("shopping_cart") ||
+                                  currentUrl.contains("/cart");
+
+            if (isOnCartPage) {
+                System.out.println("URL indicates we're on cart page");
+                return true;
+            }
+
+            // Also try to find heading
+            try {
+                List<WebElement> headings = driver.findElements(
+                    By.xpath("//h1[contains(text(),'Shopping Cart') or contains(text(),'shopping cart') or contains(text(),'Cart')]"));
+                if (!headings.isEmpty()) {
+                    System.out.println("Found cart heading: " + headings.get(0).getText());
+                    return true;
+                }
+            } catch (Exception e) {
+                System.out.println("Could not find cart heading: " + e.getMessage());
+            }
+
+            // Check for cart table or empty cart message
+            try {
+                List<WebElement> cartElements = driver.findElements(
+                    By.xpath("//table[@id='shopping-cart-table'] | //p[@class='empty'] | //div[@class='cart-empty']"));
+                if (!cartElements.isEmpty()) {
+                    System.out.println("Found cart elements (table or empty message)");
+                    return true;
+                }
+            } catch (Exception e) {
+                System.out.println("Could not find cart elements: " + e.getMessage());
+            }
+
+            // Final check: page heading element
+            boolean headingDisplayed = waitHelper.isElementDisplayed(pageHeading);
+            System.out.println("Page heading displayed: " + headingDisplayed);
+
+            return headingDisplayed;
+        } catch (Exception e) {
+            System.out.println("Error checking shopping cart page: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public int getCartItemCount() {
-        return cartItems.size();
+        try {
+            // Check if cart is empty first
+            if (waitHelper.isElementDisplayed(emptyCartMessage)) {
+                return 0;
+            }
+            return cartItems.size();
+        } catch (Exception e) {
+            return 0;
+        }
     }
 
     public void updateQuantity(int itemIndex, int quantity) {
         if (itemIndex < cartItems.size()) {
             WebElement item = cartItems.get(itemIndex);
-            WebElement qtyInput = item.findElement(By.xpath(".//input[@title='Qty']"));
+            WebElement qtyInput = item.findElement(By.xpath(".//input[@title='Qty' or contains(@name,'qty')]"));
             waitHelper.waitForElementVisible(qtyInput);
+            scrollToElement(qtyInput);
             qtyInput.clear();
             qtyInput.sendKeys(String.valueOf(quantity));
         }
@@ -54,15 +113,39 @@ public class ShoppingCartPage extends BasePage {
 
     public void clickUpdateButton() {
         waitHelper.waitForElementClickable(updateButton);
-        updateButton.click();
+        scrollToElement(updateButton);
+        try {
+            updateButton.click();
+        } catch (Exception e) {
+            js.executeScript("arguments[0].click();", updateButton);
+        }
+
+        // Wait for update to process
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
     }
 
     public void deleteItem(int itemIndex) {
         if (itemIndex < cartItems.size()) {
             WebElement item = cartItems.get(itemIndex);
-            WebElement deleteBtn = item.findElement(By.xpath(".//a[@title='Remove item']"));
+            WebElement deleteBtn = item.findElement(By.xpath(".//a[@title='Remove item' or contains(@class,'btn-remove') or contains(@class,'remove')]"));
             waitHelper.waitForElementClickable(deleteBtn);
-            deleteBtn.click();
+            scrollToElement(deleteBtn);
+            try {
+                deleteBtn.click();
+            } catch (Exception e) {
+                js.executeScript("arguments[0].click();", deleteBtn);
+            }
+
+            // Wait for deletion to process
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 

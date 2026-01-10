@@ -5,151 +5,127 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * RegisterPage - Page Object for User Registration Page
- *
- * URL: http://localhost:5173/register
- *
- * This page has:
- * - Username input
- * - Email input
- * - Password input
- * - Register/Sign Up button
- * - Error messages (if registration fails)
+ * RegisterPage - Tealium E-commerce Registration Page
  */
 public class RegisterPage extends BasePage {
 
-    // ===== PAGE ELEMENTS =====
+    @FindBy(id = "firstname")
+    private WebElement firstNameField;
 
-    @FindBy(id = "username")
-    private WebElement usernameField;
+    @FindBy(id = "middlename")
+    private WebElement middleNameField;
 
-    @FindBy(id = "email")
+    @FindBy(id = "lastname")
+    private WebElement lastNameField;
+
+    @FindBy(id = "email_address")
     private WebElement emailField;
 
     @FindBy(id = "password")
     private WebElement passwordField;
 
-    @FindBy(xpath = "//button[@type='submit' and contains(text(),'Submit')]")  // React uses "Submit" button text
+    @FindBy(id = "confirmation")
+    private WebElement confirmPasswordField;
+
+    @FindBy(id = "is_subscribed")
+    private WebElement newsletterCheckbox;
+
+    @FindBy(xpath = "//button[@title='Register']")
     private WebElement registerButton;
 
-    @FindBy(xpath = "//div[contains(@class,'alert') or contains(@class,'error')]")
-    private WebElement errorMessage;
+    @FindBy(xpath = "//h1[contains(text(),'Create an Account')]")
+    private WebElement pageHeading;
 
-    @FindBy(xpath = "//h5[contains(text(),'Register')]")  // React uses h5, not h1
-    private WebElement registerHeading;
+    @FindBy(xpath = "//li[@class='success-msg']//span")
+    private WebElement successMessage;
 
-    @FindBy(linkText = "Login")
-    private WebElement loginLink;
-
-    /**
-     * Constructor
-     */
     public RegisterPage(WebDriver driver) {
         super(driver);
     }
 
-    // ===== PAGE ACTIONS =====
-
-    /**
-     * Navigate to registration page
-     */
-    public void navigateToRegister() {
-        driver.get(utils.ConfigReader.getBaseUrl() + "/register");
+    public void enterFirstName(String firstName) {
+        waitHelper.waitForElementVisible(firstNameField);
+        firstNameField.clear();
+        firstNameField.sendKeys(firstName);
     }
 
-    /**
-     * Enter username
-     */
-    public void enterUsername(String username) {
-        waitHelper.waitForElementVisible(usernameField);
-        usernameField.clear();
-        usernameField.sendKeys(username);
+    public void enterMiddleName(String middleName) {
+        waitHelper.waitForElementVisible(middleNameField);
+        middleNameField.clear();
+        middleNameField.sendKeys(middleName);
     }
 
-    /**
-     * Enter email
-     */
+    public void enterLastName(String lastName) {
+        waitHelper.waitForElementVisible(lastNameField);
+        lastNameField.clear();
+        lastNameField.sendKeys(lastName);
+    }
+
     public void enterEmail(String email) {
         waitHelper.waitForElementVisible(emailField);
         emailField.clear();
         emailField.sendKeys(email);
     }
 
-    /**
-     * Enter password
-     */
     public void enterPassword(String password) {
         waitHelper.waitForElementVisible(passwordField);
         passwordField.clear();
         passwordField.sendKeys(password);
     }
 
-    /**
-     * Click register button
-     * Uses JavaScript click to avoid ElementClickInterceptedException
-     */
-    public void clickRegisterButton() {
-        waitHelper.waitForElementClickable(registerButton);
-
-        // Scroll button into view
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript(
-            "arguments[0].scrollIntoView({block: 'center'});", registerButton
-        );
-
-        // Small wait after scroll
-        try { Thread.sleep(500); } catch (InterruptedException e) {}
-
-        // Use JavaScript click
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript(
-            "arguments[0].click();", registerButton
-        );
+    public void enterConfirmPassword(String confirmPassword) {
+        waitHelper.waitForElementVisible(confirmPasswordField);
+        confirmPasswordField.clear();
+        confirmPasswordField.sendKeys(confirmPassword);
     }
 
-    /**
-     * Complete registration - fills all fields and submits
-     *
-     * @param username - Username for new account
-     * @param email - Email for new account
-     * @param password - Password for new account
-     */
-    public void register(String username, String email, String password) {
-        enterUsername(username);
+    public void checkNewsletterSubscription() {
+        if (!newsletterCheckbox.isSelected()) {
+            newsletterCheckbox.click();
+        }
+    }
+
+    public void clickRegisterButton() {
+        waitHelper.waitForElementClickable(registerButton);
+        scrollToElement(registerButton);
+        js.executeScript("arguments[0].click();", registerButton);
+    }
+
+    public void registerUser(String firstName, String lastName, String email, String password) {
+        waitHelper.waitForElementVisible(firstNameField);
+        enterFirstName(firstName);
+        enterLastName(lastName);
         enterEmail(email);
         enterPassword(password);
+        enterConfirmPassword(password);
         clickRegisterButton();
     }
 
-    // ===== VERIFICATION METHODS =====
-
-    /**
-     * Check if registration was successful
-     * After successful registration, should redirect to campgrounds or login
-     */
-    public boolean isRegistrationSuccessful() {
-        // Registration might redirect to /campgrounds or /login
-        return waitHelper.waitForUrlContains("/campgrounds") ||
-               waitHelper.waitForUrlContains("/login");
-    }
-
-    /**
-     * Check if error message is displayed
-     */
-    public boolean isErrorMessageDisplayed() {
-        return waitHelper.isElementDisplayed(errorMessage);
-    }
-
-    /**
-     * Get error message text
-     */
-    public String getErrorMessage() {
-        waitHelper.waitForElementVisible(errorMessage);
-        return errorMessage.getText();
-    }
-
-    /**
-     * Check if register page is loaded
-     */
     public boolean isRegisterPageLoaded() {
-        return waitHelper.isElementDisplayed(registerHeading);
+        return waitHelper.isElementDisplayed(pageHeading);
+    }
+
+    public String getPageTitle() {
+        return driver.getTitle();
+    }
+
+    public boolean isSuccessMessageDisplayed() {
+        return waitHelper.isElementDisplayed(successMessage);
+    }
+
+    public String getSuccessMessage() {
+        waitHelper.waitForElementVisible(successMessage);
+        return successMessage.getText();
+    }
+
+    public void clickLogOut() {
+        clickAccountMenu();
+        waitHelper.waitForElementVisible(logOutLink);
+        waitHelper.waitForElementClickable(logOutLink);
+        try {
+            logOutLink.click();
+        } catch (Exception e) {
+            js.executeScript("arguments[0].click();", logOutLink);
+        }
     }
 }

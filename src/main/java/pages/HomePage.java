@@ -5,60 +5,42 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * HomePage - Page Object for YelpCamp Home/Landing Page
- *
- * URL: http://localhost:5173/
- *
- * This page typically shows:
- * - Welcome message
- * - Navigation to view campgrounds
- * - Links to Login/Register
+ * HomePage - Tealium E-commerce Home Page
  */
 public class HomePage extends BasePage {
 
-    // ===== PAGE ELEMENTS =====
+    @FindBy(xpath = "//h1")
+    private WebElement mainHeading;
 
-    @FindBy(xpath = "//h1[contains(text(),'YelpCamp') or contains(text(),'Welcome')]")
-    private WebElement welcomeHeading;
+    @FindBy(className = "logo")
+    private WebElement logo;
 
-    @FindBy(xpath = "//a[contains(text(),'View Campgrounds')]")
-    private WebElement viewCampgroundsButton;
-
-    @FindBy(xpath = "//p[contains(text(),'Welcome to YelpCamp')]")
-    private WebElement welcomeMessage;
-
-    /**
-     * Constructor
-     */
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    // ===== PAGE ACTIONS =====
-
-    /**
-     * Click "View Campgrounds" button to go to all campgrounds page
-     */
-    public void clickViewCampgrounds() {
-        waitHelper.waitForElementClickable(viewCampgroundsButton);
-        viewCampgroundsButton.click();
+    public void navigateToHomePage() {
+        driver.get(utils.ConfigReader.getBaseUrl());
     }
 
-    // ===== VERIFICATION METHODS (REQUIREMENT: Use asserts) =====
-
-    /**
-     * Check if home page is loaded by verifying welcome heading is displayed
-     * Use this in assertions: Assert.assertTrue(homePage.isHomePageLoaded())
-     */
     public boolean isHomePageLoaded() {
-        return waitHelper.isElementDisplayed(welcomeHeading);
+        return waitHelper.isElementDisplayed(logo);
     }
 
-    /**
-     * Get the welcome message text
-     */
-    public String getWelcomeMessage() {
-        waitHelper.waitForElementVisible(welcomeMessage);
-        return welcomeMessage.getText();
+    public String getPageTitle() {
+        return driver.getTitle();
     }
+
+    // Methods inherited from BasePage:
+    // - clickRegister()
+    // - clickSignIn()
+    // - clickLogOut()
+    // - hoverOverWomenAndClickViewAll()
+    // - hoverOverMenAndClickViewAll()
+    // - hoverOverSaleAndClickViewAll()
+    // - clickMyWishList()
+    // - clickShoppingCart()
+    // - isUserLoggedIn()
+    // - getWelcomeMessageText()
+    // - getAccountMenuText()
 }
