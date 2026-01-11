@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-01-10T22:36:22 CET" name="Tealium E-commerce Automation Test Suite" finished-at="2026-01-10T22:42:56 CET" duration-ms="394601">
+  <suite started-at="2026-01-11T01:49:26 CET" name="Tealium E-commerce Automation Test Suite" finished-at="2026-01-11T01:54:09 CET" duration-ms="282764">
     <groups>
     </groups>
-    <test started-at="2026-01-10T22:36:22 CET" name="Account Tests" finished-at="2026-01-10T22:36:54 CET" duration-ms="32113">
+    <test started-at="2026-01-11T01:49:26 CET" name="Account Tests" finished-at="2026-01-11T01:49:53 CET" duration-ms="26692">
       <class name="tests.AuthenticationTests">
-        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.AuthenticationTests@6356695f]" started-at="2026-01-10T22:36:22 CET" name="setup" finished-at="2026-01-10T22:36:31 CET" duration-ms="8900" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.AuthenticationTests@6356695f]" started-at="2026-01-11T01:49:26 CET" name="setup" finished-at="2026-01-11T01:49:34 CET" duration-ms="8208" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testCreateAccount()[pri:1, instance:tests.AuthenticationTests@6356695f]" started-at="2026-01-10T22:36:31 CET" name="testCreateAccount" description="Test 1: Create an Account" finished-at="2026-01-10T22:36:37 CET" duration-ms="6259" status="PASS">
+        <test-method signature="testCreateAccount()[pri:1, instance:tests.AuthenticationTests@6356695f]" started-at="2026-01-11T01:49:34 CET" name="testCreateAccount" description="Test 1: Create an Account" finished-at="2026-01-11T01:49:41 CET" duration-ms="6906" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreateAccount -->
-        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.AuthenticationTests@6356695f]" started-at="2026-01-10T22:36:37 CET" name="tearDown" finished-at="2026-01-10T22:36:37 CET" duration-ms="485" status="PASS">
+        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.AuthenticationTests@6356695f]" started-at="2026-01-11T01:49:41 CET" name="tearDown" finished-at="2026-01-11T01:49:42 CET" duration-ms="310" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -33,7 +33,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.AuthenticationTests@6356695f]" started-at="2026-01-10T22:36:38 CET" name="setup" finished-at="2026-01-10T22:36:45 CET" duration-ms="7861" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.AuthenticationTests@6356695f]" started-at="2026-01-11T01:49:42 CET" name="setup" finished-at="2026-01-11T01:49:47 CET" duration-ms="5222" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -44,11 +44,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testSignIn()[pri:2, instance:tests.AuthenticationTests@6356695f]" started-at="2026-01-10T22:36:45 CET" name="testSignIn" description="Test 2: Sign In" finished-at="2026-01-10T22:36:53 CET" duration-ms="8059" status="PASS">
+        <test-method signature="testSignIn()[pri:2, instance:tests.AuthenticationTests@6356695f]" started-at="2026-01-11T01:49:47 CET" name="testSignIn" description="Test 2: Sign In" finished-at="2026-01-11T01:49:53 CET" duration-ms="5659" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSignIn -->
-        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.AuthenticationTests@6356695f]" started-at="2026-01-10T22:36:53 CET" name="tearDown" finished-at="2026-01-10T22:36:54 CET" duration-ms="446" status="PASS">
+        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.AuthenticationTests@6356695f]" started-at="2026-01-11T01:49:53 CET" name="tearDown" finished-at="2026-01-11T01:49:53 CET" duration-ms="312" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -61,13 +61,13 @@
         </test-method> <!-- tearDown -->
       </class> <!-- tests.AuthenticationTests -->
     </test> <!-- Account Tests -->
-    <test started-at="2026-01-10T22:36:54 CET" name="E-commerce Tests" finished-at="2026-01-10T22:42:56 CET" duration-ms="362439">
+    <test started-at="2026-01-11T01:49:53 CET" name="E-commerce Tests" finished-at="2026-01-11T01:54:09 CET" duration-ms="255984">
       <class name="tests.EcommerceTests">
-        <test-method is-config="true" signature="setupSuite()[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:36:21 CET" name="setupSuite" finished-at="2026-01-10T22:36:22 CET" duration-ms="920" status="PASS">
+        <test-method is-config="true" signature="setupSuite()[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:49:25 CET" name="setupSuite" finished-at="2026-01-11T01:49:26 CET" duration-ms="774" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupSuite -->
-        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:36:54 CET" name="setup" finished-at="2026-01-10T22:37:02 CET" duration-ms="8139" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:49:53 CET" name="setup" finished-at="2026-01-11T01:50:00 CET" duration-ms="7385" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -78,7 +78,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method is-config="true" signature="loginBeforeEachTest(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:37:02 CET" name="loginBeforeEachTest" finished-at="2026-01-10T22:37:05 CET" depends-on-methods="tests.BaseTest.setup" duration-ms="2573" status="PASS">
+        <test-method is-config="true" signature="loginBeforeEachTest(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:50:00 CET" name="loginBeforeEachTest" finished-at="2026-01-11T01:50:03 CET" depends-on-methods="tests.BaseTest.setup" duration-ms="2950" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -89,11 +89,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginBeforeEachTest -->
-        <test-method signature="testCheckHoverStyle()[pri:3, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:37:05 CET" name="testCheckHoverStyle" description="Test 3: Check hover style" finished-at="2026-01-10T22:37:10 CET" duration-ms="4978" status="PASS">
+        <test-method signature="testCheckHoverStyle()[pri:3, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:50:03 CET" name="testCheckHoverStyle" description="Test 3: Check hover style" finished-at="2026-01-11T01:50:08 CET" duration-ms="4777" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCheckHoverStyle -->
-        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:37:10 CET" name="tearDown" finished-at="2026-01-10T22:37:10 CET" duration-ms="365" status="PASS">
+        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:50:08 CET" name="tearDown" finished-at="2026-01-11T01:50:09 CET" duration-ms="480" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -104,7 +104,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:37:10 CET" name="setup" finished-at="2026-01-10T22:37:20 CET" duration-ms="9659" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:50:09 CET" name="setup" finished-at="2026-01-11T01:50:14 CET" duration-ms="5632" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -115,7 +115,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method is-config="true" signature="loginBeforeEachTest(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:37:20 CET" name="loginBeforeEachTest" finished-at="2026-01-10T22:37:22 CET" depends-on-methods="tests.BaseTest.setup" duration-ms="2793" status="PASS">
+        <test-method is-config="true" signature="loginBeforeEachTest(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:50:14 CET" name="loginBeforeEachTest" finished-at="2026-01-11T01:50:17 CET" depends-on-methods="tests.BaseTest.setup" duration-ms="3145" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -126,11 +126,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginBeforeEachTest -->
-        <test-method signature="testCheckSaleProductsStyle()[pri:4, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:37:22 CET" name="testCheckSaleProductsStyle" description="Test 4: Check sale products style" finished-at="2026-01-10T22:37:28 CET" duration-ms="5170" status="PASS">
+        <test-method signature="testCheckSaleProductsStyle()[pri:4, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:50:17 CET" name="testCheckSaleProductsStyle" description="Test 4: Check sale products style" finished-at="2026-01-11T01:50:22 CET" duration-ms="5158" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCheckSaleProductsStyle -->
-        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:37:28 CET" name="tearDown" finished-at="2026-01-10T22:37:28 CET" duration-ms="433" status="PASS">
+        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:50:22 CET" name="tearDown" finished-at="2026-01-11T01:50:23 CET" duration-ms="514" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -141,7 +141,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:37:28 CET" name="setup" finished-at="2026-01-10T22:37:35 CET" duration-ms="7147" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:50:23 CET" name="setup" finished-at="2026-01-11T01:50:30 CET" duration-ms="7491" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -152,7 +152,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method is-config="true" signature="loginBeforeEachTest(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:37:35 CET" name="loginBeforeEachTest" finished-at="2026-01-10T22:37:38 CET" depends-on-methods="tests.BaseTest.setup" duration-ms="2552" status="PASS">
+        <test-method is-config="true" signature="loginBeforeEachTest(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:50:30 CET" name="loginBeforeEachTest" finished-at="2026-01-11T01:50:34 CET" depends-on-methods="tests.BaseTest.setup" duration-ms="3102" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -163,11 +163,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginBeforeEachTest -->
-        <test-method signature="testCheckPageFilters()[pri:5, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:37:38 CET" name="testCheckPageFilters" description="Test 5: Check page filters" finished-at="2026-01-10T22:38:22 CET" duration-ms="44204" status="PASS">
+        <test-method signature="testCheckPageFilters()[pri:5, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:50:34 CET" name="testCheckPageFilters" description="Test 5: Check page filters" finished-at="2026-01-11T01:51:00 CET" duration-ms="26790" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCheckPageFilters -->
-        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:38:22 CET" name="tearDown" finished-at="2026-01-10T22:38:22 CET" duration-ms="455" status="PASS">
+        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:51:00 CET" name="tearDown" finished-at="2026-01-11T01:51:01 CET" duration-ms="431" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -178,7 +178,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:38:22 CET" name="setup" finished-at="2026-01-10T22:38:29 CET" duration-ms="6174" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:51:01 CET" name="setup" finished-at="2026-01-11T01:51:06 CET" duration-ms="5326" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -189,7 +189,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method is-config="true" signature="loginBeforeEachTest(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:38:29 CET" name="loginBeforeEachTest" finished-at="2026-01-10T22:38:32 CET" depends-on-methods="tests.BaseTest.setup" duration-ms="2948" status="PASS">
+        <test-method is-config="true" signature="loginBeforeEachTest(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:51:06 CET" name="loginBeforeEachTest" finished-at="2026-01-11T01:51:09 CET" depends-on-methods="tests.BaseTest.setup" duration-ms="3024" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -200,11 +200,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginBeforeEachTest -->
-        <test-method signature="testCheckSorting()[pri:6, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:38:32 CET" name="testCheckSorting" description="Test 6: Check Sorting" finished-at="2026-01-10T22:40:47 CET" duration-ms="135821" status="PASS">
+        <test-method signature="testCheckSorting()[pri:6, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:51:09 CET" name="testCheckSorting" description="Test 6: Check Sorting" finished-at="2026-01-11T01:52:33 CET" duration-ms="84126" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCheckSorting -->
-        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:40:47 CET" name="tearDown" finished-at="2026-01-10T22:40:47 CET" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:52:33 CET" name="tearDown" finished-at="2026-01-11T01:52:33 CET" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -215,7 +215,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:40:47 CET" name="setup" finished-at="2026-01-10T22:40:47 CET" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:52:33 CET" name="setup" finished-at="2026-01-11T01:52:33 CET" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -226,7 +226,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method is-config="true" signature="loginBeforeEachTest(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:40:47 CET" name="loginBeforeEachTest" finished-at="2026-01-10T22:40:47 CET" depends-on-methods="tests.BaseTest.setup" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="loginBeforeEachTest(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:52:33 CET" name="loginBeforeEachTest" finished-at="2026-01-11T01:52:33 CET" depends-on-methods="tests.BaseTest.setup" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -237,11 +237,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginBeforeEachTest -->
-        <test-method signature="testShoppingCart()[pri:7, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:40:47 CET" name="testShoppingCart" description="Test 7: Shopping Cart test" finished-at="2026-01-10T22:42:12 CET" depends-on-methods="tests.EcommerceTests.testCheckSorting" duration-ms="84755" status="PASS">
+        <test-method signature="testShoppingCart()[pri:7, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:52:33 CET" name="testShoppingCart" description="Test 7: Shopping Cart test" finished-at="2026-01-11T01:53:38 CET" depends-on-methods="tests.EcommerceTests.testCheckSorting" duration-ms="64715" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testShoppingCart -->
-        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:42:12 CET" name="tearDown" finished-at="2026-01-10T22:42:12 CET" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:53:38 CET" name="tearDown" finished-at="2026-01-11T01:53:38 CET" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -252,7 +252,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:42:12 CET" name="setup" finished-at="2026-01-10T22:42:12 CET" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:53:38 CET" name="setup" finished-at="2026-01-11T01:53:38 CET" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -263,7 +263,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method is-config="true" signature="loginBeforeEachTest(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:42:12 CET" name="loginBeforeEachTest" finished-at="2026-01-10T22:42:12 CET" depends-on-methods="tests.BaseTest.setup" duration-ms="1" status="PASS">
+        <test-method signature="testEmptyShoppingCart()[pri:8, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:53:38 CET" name="testEmptyShoppingCart" description="Test 8: Empty Shopping Cart Test" finished-at="2026-01-11T01:54:09 CET" depends-on-methods="tests.EcommerceTests.testShoppingCart" duration-ms="30517" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEmptyShoppingCart -->
+        <test-method is-config="true" signature="loginBeforeEachTest(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:53:38 CET" name="loginBeforeEachTest" finished-at="2026-01-11T01:53:38 CET" depends-on-methods="tests.BaseTest.setup" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -274,11 +278,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginBeforeEachTest -->
-        <test-method signature="testEmptyShoppingCart()[pri:8, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:42:12 CET" name="testEmptyShoppingCart" description="Test 8: Empty Shopping Cart Test" finished-at="2026-01-10T22:42:56 CET" depends-on-methods="tests.EcommerceTests.testShoppingCart" duration-ms="43853" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testEmptyShoppingCart -->
-        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:42:56 CET" name="tearDown" finished-at="2026-01-10T22:42:56 CET" duration-ms="388" status="PASS">
+        <test-method is-config="true" signature="tearDown(java.lang.reflect.Method)[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:54:09 CET" name="tearDown" finished-at="2026-01-11T01:54:09 CET" duration-ms="390" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -289,7 +289,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-10T22:42:56 CET" name="tearDownSuite" finished-at="2026-01-10T22:42:57 CET" duration-ms="662" status="PASS">
+        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:tests.EcommerceTests@6aeb35e6]" started-at="2026-01-11T01:54:09 CET" name="tearDownSuite" finished-at="2026-01-11T01:54:09 CET" duration-ms="548" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownSuite -->

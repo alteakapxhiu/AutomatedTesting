@@ -23,6 +23,8 @@ public class BaseTest {
     @BeforeMethod
     public void setup(java.lang.reflect.Method method) {
         String testName = method.getName();
+        System.out.println("\n[SETUP] Starting setup for: " + testName);
+        long setupStartTime = System.currentTimeMillis();
 
         // For Test 7 and Test 8, don't create a new driver - reuse existing session
         if (testName.equals("testShoppingCart") || testName.equals("testEmptyShoppingCart")) {
@@ -37,31 +39,27 @@ public class BaseTest {
             String baseUrl = ConfigReader.getBaseUrl();
             org.openqa.selenium.JavascriptExecutor js = (org.openqa.selenium.JavascriptExecutor) driver;
 
-            try {
-                // Try to set a blank page first with shorter timeout
-                driver.manage().timeouts().pageLoadTimeout(java.time.Duration.ofSeconds(10));
-                driver.get("about:blank");
-            } catch (Exception e) {
-                System.out.println("Initial blank page load issue, continuing");
-            }
-
-            // Reset timeout to normal
-            driver.manage().timeouts().pageLoadTimeout(java.time.Duration.ofSeconds(60));
+            // Set page load timeout
+            driver.manage().timeouts().pageLoadTimeout(java.time.Duration.ofSeconds(20));
 
             // Use JavaScript to navigate - this bypasses some renderer issues
             js.executeScript("window.location.href = arguments[0];", baseUrl);
 
             // Wait for page to be ready using JavaScript
             try {
-                new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(30))
+                new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(10))
                     .until(d -> js.executeScript("return document.readyState").equals("complete"));
             } catch (Exception e) {
-                System.out.println("Page load wait completed with exception, but continuing: " + e.getMessage());
+                // Page load wait timed out, but continue anyway
             }
         }
 
         ExtentTest test = extent.createTest(this.getClass().getSimpleName());
         extentTest.set(test);
+
+        long setupEndTime = System.currentTimeMillis();
+        long setupDuration = setupEndTime - setupStartTime;
+        System.out.println("[SETUP] Completed setup for: " + testName + " (took " + setupDuration + "ms)\n");
     }
 
     @AfterMethod

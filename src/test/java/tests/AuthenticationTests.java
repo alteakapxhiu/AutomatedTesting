@@ -26,6 +26,9 @@ public class AuthenticationTests extends BaseTest {
      */
     @Test(priority = 1, description = "Test 1: Create an Account")
     public void testCreateAccount() {
+        System.out.println("\nTEST 1 STARTED: Create an Account");
+        System.out.println("Description: Register a new user account\n");
+
         HomePage homePage = new HomePage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
 
@@ -57,6 +60,8 @@ public class AuthenticationTests extends BaseTest {
 
         // Step 7: Click on Account and Log Out
         registerPage.clickLogOut();
+
+        System.out.println("TEST 1 COMPLETED SUCCESSFULLY\n");
     }
 
     /**
@@ -72,6 +77,9 @@ public class AuthenticationTests extends BaseTest {
      */
     @Test(priority = 2, description = "Test 2: Sign In")
     public void testSignIn() {
+        System.out.println("\nTEST 2 STARTED: Sign In");
+        System.out.println("Description: Login with existing credentials\n");
+
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
 
@@ -87,7 +95,7 @@ public class AuthenticationTests extends BaseTest {
 
         // Additional wait for page to stabilize
         try {
-            Thread.sleep(2000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -103,7 +111,7 @@ public class AuthenticationTests extends BaseTest {
 
         // Wait for login page to load
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -122,5 +130,7 @@ public class AuthenticationTests extends BaseTest {
 
         // Step 5: Click on Account and Log Out
         homePage.clickLogOut();
+
+        System.out.println("TEST 2 COMPLETED SUCCESSFULLY\n");
     }
 }

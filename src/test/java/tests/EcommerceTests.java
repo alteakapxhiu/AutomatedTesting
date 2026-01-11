@@ -63,6 +63,9 @@ public class EcommerceTests extends BaseTest {
      */
     @Test(priority = 3, description = "Test 3: Check hover style")
     public void testCheckHoverStyle() {
+        System.out.println("\nTEST 3 STARTED: Check hover style");
+        System.out.println("Description: Verify hover effects on products\n");
+
         HomePage homePage = new HomePage(driver);
         ProductListPage productListPage = new ProductListPage(driver);
 
@@ -90,6 +93,8 @@ public class EcommerceTests extends BaseTest {
 
         // Test passes if we can hover without errors
         Assert.assertTrue(true, "Hover interaction completed successfully");
+
+        System.out.println("TEST 3 COMPLETED SUCCESSFULLY\n");
     }
 
     /**
@@ -102,6 +107,9 @@ public class EcommerceTests extends BaseTest {
      */
     @Test(priority = 4, description = "Test 4: Check sale products style")
     public void testCheckSaleProductsStyle() {
+        System.out.println("\nTEST 4 STARTED: Check sale products style");
+        System.out.println("Description: Verify sale product price styling\n");
+
         HomePage homePage = new HomePage(driver);
         ProductListPage productListPage = new ProductListPage(driver);
 
@@ -126,6 +134,8 @@ public class EcommerceTests extends BaseTest {
                         "Final price should be blue and not strikethrough for product " + i);
             }
         }
+
+        System.out.println("TEST 4 COMPLETED SUCCESSFULLY\n");
     }
 
     /**
@@ -140,6 +150,9 @@ public class EcommerceTests extends BaseTest {
      */
     @Test(priority = 5, description = "Test 5: Check page filters")
     public void testCheckPageFilters() {
+        System.out.println("\nTEST 5 STARTED: Check page filters");
+        System.out.println("Description: Verify color and price filters work correctly\n");
+
         HomePage homePage = new HomePage(driver);
         ProductListPage productListPage = new ProductListPage(driver);
 
@@ -151,7 +164,7 @@ public class EcommerceTests extends BaseTest {
 
         // Wait for filter to apply
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -168,7 +181,7 @@ public class EcommerceTests extends BaseTest {
 
         // Wait for filter to apply
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -185,6 +198,8 @@ public class EcommerceTests extends BaseTest {
             Assert.assertTrue(productListPage.isProductPriceInRange(i, 0.0, 99.99),
                     "Product " + i + " price should be in range $0.00 - $99.99");
         }
+
+        System.out.println("TEST 5 COMPLETED SUCCESSFULLY\n");
     }
 
     /**
@@ -198,6 +213,9 @@ public class EcommerceTests extends BaseTest {
      */
     @Test(priority = 6, description = "Test 6: Check Sorting")
     public void testCheckSorting() {
+        System.out.println("\nTEST 6 STARTED: Check Sorting");
+        System.out.println("Description: Verify sorting by price and add items to wishlist\n");
+
         HomePage homePage = new HomePage(driver);
         ProductListPage productListPage = new ProductListPage(driver);
 
@@ -208,12 +226,12 @@ public class EcommerceTests extends BaseTest {
                 System.out.println("Not logged in at start of Test 6, logging in");
                 LoginPage loginPage = new LoginPage(driver);
                 loginPage.login(testEmail, testPassword);
-                Thread.sleep(2000);
+                Thread.sleep(800);
                 driver.get("https://ecommerce.tealiumdemo.com/");
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 new WebDriverWait(driver, Duration.ofSeconds(10))
                     .until(d -> js.executeScript("return document.readyState").equals("complete"));
-                Thread.sleep(1000);
+                Thread.sleep(500);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -227,7 +245,7 @@ public class EcommerceTests extends BaseTest {
 
         // Wait for sorting to apply
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -241,89 +259,117 @@ public class EcommerceTests extends BaseTest {
         System.out.println("Re-logging in to ensure fresh session before wishlist operations");
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
-        driver.get("https://ecommerce.tealiumdemo.com/customer/account/logout/");
+        js.executeScript("window.location.href = 'https://ecommerce.tealiumdemo.com/customer/account/logout/';");
         try {
-            new WebDriverWait(driver, Duration.ofSeconds(10))
+            new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(d -> js.executeScript("return document.readyState").equals("complete"));
-            Thread.sleep(2000);
+            Thread.sleep(300);
         } catch (Exception e) {
-            e.printStackTrace();
+            // Continue anyway
         }
 
-        driver.get("https://ecommerce.tealiumdemo.com/customer/account/login/");
+        js.executeScript("window.location.href = 'https://ecommerce.tealiumdemo.com/customer/account/login/';");
         try {
-            new WebDriverWait(driver, Duration.ofSeconds(10))
+            new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(d -> js.executeScript("return document.readyState").equals("complete"));
-            Thread.sleep(2000);
+            Thread.sleep(300);
         } catch (Exception e) {
-            e.printStackTrace();
+            // Continue anyway
         }
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(testEmail, testPassword);
         try {
-            Thread.sleep(2000);
+            Thread.sleep(400);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            // Continue anyway
         }
 
         System.out.println("Logged in successfully, navigating to women's page");
         homePage.hoverOverWomenAndClickViewAll();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(300);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            // Continue anyway
         }
 
         productListPage.selectSortBy("Price");
         try {
-            Thread.sleep(1000);
+            Thread.sleep(300);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            // Continue anyway
         }
 
-        // To avoid session expiration issues, navigate directly to wishlist after first add
+        // Step 4: Add first two products to wishlist
+        System.out.println("Attempting to add product 0 to wishlist");
         productListPage.addProductToWishlist(0);
 
-        // Wait for redirect and check where we are
+        // Wait for redirect
         try {
-            Thread.sleep(3000);
+            Thread.sleep(300);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            // Continue anyway
         }
 
-        // Navigate to wishlist to see first item
-        System.out.println("Navigating to wishlist to verify first item was added");
-        String wishlistUrl = driver.getCurrentUrl();
-        System.out.println("Current URL: " + wishlistUrl);
+        // Check if we're on wishlist or login page
+        String currentUrl = driver.getCurrentUrl();
+        System.out.println("Current URL after first add: " + currentUrl);
 
-        // If already on wishlist page, good. If on login, re-login.
-        if (wishlistUrl.contains("customer/account/login")) {
+        // If on login page, re-login
+        if (currentUrl.contains("customer/account/login")) {
             System.out.println("Session expired after first product, logging back in");
             loginPage.login(testEmail, testPassword);
             try {
-                Thread.sleep(2000);
+                Thread.sleep(400);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                // Continue anyway
             }
         }
 
-        // Navigate to wishlist
-        homePage.clickMyWishList();
+        // Navigate back to women's page to add second product
+        System.out.println("Navigating back to women's page to add second product");
+        homePage.hoverOverWomenAndClickViewAll();
         try {
-            Thread.sleep(2000);
+            Thread.sleep(300);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            // Continue anyway
         }
 
-        // Check current wishlist count
+        // Sort by price again
+        productListPage.selectSortBy("Price");
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            // Continue anyway
+        }
+
+        // Add second product to wishlist
+        System.out.println("Attempting to add product 1 to wishlist");
+        productListPage.addProductToWishlist(1);
+
+        // Wait for redirect
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            // Continue anyway
+        }
+
+        // Navigate to wishlist to verify both items were added
+        System.out.println("Navigating to wishlist to verify items");
+        homePage.clickMyWishList();
+        try {
+            Thread.sleep(400);
+        } catch (InterruptedException e) {
+            // Continue anyway
+        }
+
+        // Step 5: Check correct number of items is displayed (My Wish List (2 items))
         WishlistPage wishlistPage = new WishlistPage(driver);
         int currentCount = wishlistPage.getWishlistItemCount();
-        System.out.println("Wishlist currently has " + currentCount + " items");
-
-        // Step 5: Verify wishlist has at least 1 item
         System.out.println("Final wishlist count: " + currentCount + " items");
-        Assert.assertTrue(currentCount >= 1, "Wishlist should have at least 1 item. Found: " + currentCount);
+        Assert.assertTrue(currentCount >= 2, "Wishlist should have 2 items. Found: " + currentCount);
+
+        System.out.println("TEST 6 COMPLETED SUCCESSFULLY\n");
     }
 
     /**
@@ -336,6 +382,9 @@ public class EcommerceTests extends BaseTest {
      */
     @Test(priority = 7, description = "Test 7: Shopping Cart test", dependsOnMethods = "testCheckSorting")
     public void testShoppingCart() {
+        System.out.println("\nTEST 7 STARTED: Shopping Cart test");
+        System.out.println("Description: Add wishlist items to cart and verify totals\n");
+
         HomePage homePage = new HomePage(driver);
         WishlistPage wishlistPage = new WishlistPage(driver);
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
@@ -363,7 +412,7 @@ public class EcommerceTests extends BaseTest {
 
                 // Scroll to top of page first
                 js.executeScript("window.scrollTo(0, 0);");
-                Thread.sleep(1000);
+                Thread.sleep(500);
 
                 // Try multiple strategies to find and click the Add to Cart button
                 boolean clicked = false;
@@ -388,7 +437,7 @@ public class EcommerceTests extends BaseTest {
                             By.xpath(".//button[@title='Add to Cart' or contains(@class,'btn-cart')]"));
 
                         js.executeScript("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", addToCartBtn);
-                        Thread.sleep(1000);
+                        Thread.sleep(500);
 
                         js.executeScript("arguments[0].click();", addToCartBtn);
                         System.out.println("Clicked Add to Cart button using JavaScript");
@@ -407,7 +456,7 @@ public class EcommerceTests extends BaseTest {
                         if (!addToCartButtons.isEmpty()) {
                             WebElement addToCartBtn = addToCartButtons.get(0);
                             js.executeScript("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", addToCartBtn);
-                            Thread.sleep(1000);
+                            Thread.sleep(500);
                             js.executeScript("arguments[0].click();", addToCartBtn);
                             System.out.println("Clicked Add to Cart button using strategy 2");
                             clicked = true;
@@ -422,7 +471,7 @@ public class EcommerceTests extends BaseTest {
                     break;
                 }
 
-                Thread.sleep(3000);
+                Thread.sleep(500);
 
                 // Check current URL
                 String currentUrl = driver.getCurrentUrl();
@@ -433,18 +482,18 @@ public class EcommerceTests extends BaseTest {
                     System.out.println("On product configure page - selecting options");
 
                     // Wait for page to load
-                    Thread.sleep(2000);
+                    Thread.sleep(800);
 
                     // Find and scroll to the Color/Size section first
                     try {
                         WebElement colorLabel = driver.findElement(By.xpath("//*[contains(text(),'Color')]"));
                         js.executeScript("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", colorLabel);
                         System.out.println("Scrolled to Color/Size section");
-                        Thread.sleep(1000);
+                        Thread.sleep(500);
                     } catch (Exception e) {
                         System.out.println("Could not find Color label, scrolling to middle of page");
                         js.executeScript("window.scrollTo(0, document.body.scrollHeight / 2);");
-                        Thread.sleep(1000);
+                        Thread.sleep(500);
                     }
 
                     // Select size and color by clicking buttons/swatches
@@ -530,7 +579,7 @@ public class EcommerceTests extends BaseTest {
                         "    console.log('Removed required-entry from: ' + el.id);" +
                         "});");
 
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
 
                     // Try to find and disable the form validator
                     js.executeScript(
@@ -539,7 +588,7 @@ public class EcommerceTests extends BaseTest {
                         "    console.log('Disabled form validator');" +
                         "}");
 
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
 
                     // Check for any validation error messages
                     try {
@@ -575,7 +624,7 @@ public class EcommerceTests extends BaseTest {
 
                         if (formSubmitted) {
                             System.out.println("Form submitted successfully, waiting for redirect...");
-                            Thread.sleep(5000); // Wait longer for redirect
+                            Thread.sleep(2000); // Wait longer for redirect
                         } else {
                             System.out.println("Form not found, trying button click...");
 
@@ -583,7 +632,7 @@ public class EcommerceTests extends BaseTest {
                             WebElement productAddToCartBtn = driver.findElement(
                                 By.xpath("//button[@title='Add to Cart' or contains(@class,'btn-cart')]"));
                             js.executeScript("arguments[0].click();", productAddToCartBtn);
-                            Thread.sleep(3000);
+                            Thread.sleep(500);
                         }
                     } catch (Exception e) {
                         System.out.println("Form submission failed: " + e.getMessage());
@@ -644,14 +693,14 @@ public class EcommerceTests extends BaseTest {
 
         // Wait for URL to change to cart page
         try {
-            new WebDriverWait(driver, Duration.ofSeconds(15))
+            new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(d -> d.getCurrentUrl().contains("/checkout/cart"));
             System.out.println("URL changed to: " + driver.getCurrentUrl());
 
             // Wait for page to be fully loaded
             new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(d -> jsCart.executeScript("return document.readyState").equals("complete"));
-            Thread.sleep(2000);
+            Thread.sleep(800);
         } catch (Exception e) {
             System.out.println("Cart navigation wait exception: " + e.getMessage());
             System.out.println("Current URL: " + driver.getCurrentUrl());
@@ -700,7 +749,7 @@ public class EcommerceTests extends BaseTest {
         // Step 4: Verify total
         // Wait for cart prices to fully load
         try {
-            Thread.sleep(3000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -718,6 +767,8 @@ public class EcommerceTests extends BaseTest {
             // Don't fail the test if price elements aren't in expected format
             // The cart is loaded and functional, which is the main goal
         }
+
+        System.out.println("TEST 7 COMPLETED SUCCESSFULLY\n");
     }
 
     /**
@@ -730,17 +781,20 @@ public class EcommerceTests extends BaseTest {
      */
     @Test(priority = 8, description = "Test 8: Empty Shopping Cart Test", dependsOnMethods = "testShoppingCart")
     public void testEmptyShoppingCart() {
+        System.out.println("\nTEST 8 STARTED: Empty Shopping Cart Test");
+        System.out.println("Description: Delete all cart items and verify empty cart message\n");
+
         // Navigate to cart page first
         JavascriptExecutor jsCart = (JavascriptExecutor) driver;
         jsCart.executeScript("window.location.href = 'https://ecommerce.tealiumdemo.com/checkout/cart/';");
 
         // Wait for cart page to load
         try {
-            new WebDriverWait(driver, Duration.ofSeconds(15))
+            new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(d -> d.getCurrentUrl().contains("/checkout/cart"));
             new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(d -> jsCart.executeScript("return document.readyState").equals("complete"));
-            Thread.sleep(2000);
+            Thread.sleep(800);
         } catch (Exception e) {
             System.out.println("Cart page navigation wait exception: " + e.getMessage());
         }
@@ -764,7 +818,7 @@ public class EcommerceTests extends BaseTest {
 
             // Wait for deletion to process
             try {
-                Thread.sleep(1000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -777,7 +831,7 @@ public class EcommerceTests extends BaseTest {
         // Step 4: Verify cart is empty
         // Wait for page to fully reload after last deletion
         try {
-            Thread.sleep(5000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -799,5 +853,7 @@ public class EcommerceTests extends BaseTest {
         } catch (Exception e) {
             System.out.println("Empty message check skipped: " + e.getMessage());
         }
+
+        System.out.println("TEST 8 COMPLETED SUCCESSFULLY\n");
     }
 }

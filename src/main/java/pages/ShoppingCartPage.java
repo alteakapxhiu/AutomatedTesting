@@ -38,7 +38,7 @@ public class ShoppingCartPage extends BasePage {
     public boolean isShoppingCartPageLoaded() {
         try {
             // Wait for cart page to fully load
-            Thread.sleep(2000);
+            Thread.sleep(800);
 
             String currentUrl = driver.getCurrentUrl();
             System.out.println("Checking if shopping cart page loaded. Current URL: " + currentUrl);
@@ -123,7 +123,7 @@ public class ShoppingCartPage extends BasePage {
 
         // Wait for update to process
         try {
-            Thread.sleep(2000);
+            Thread.sleep(800);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
@@ -154,7 +154,7 @@ public class ShoppingCartPage extends BasePage {
 
             if (clicked) {
                 System.out.println("Delete button clicked successfully via JavaScript");
-                Thread.sleep(3000); // Wait for page reload after deletion
+                Thread.sleep(1500); // Wait for page reload after deletion
             } else {
                 System.out.println("Could not find remove button via JavaScript");
             }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestSuite" time="397.641" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestSuite" time="285.709" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="webdriver.chrome.driver" value="C:\Users\USER\.cache\selenium\chromedriver\win64\143.0.7499.192\chromedriver.exe"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\USER\AppData\Local\Temp\surefire5618546832104024103\surefirebooter-20260110223619325_3.jar C:\Users\USER\AppData\Local\Temp\surefire5618546832104024103 2026-01-10T22-36-18_951-jvmRun1 surefire-20260110223619325_1tmp surefire_0-20260110223619325_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\USER\AppData\Local\Temp\surefire5045903009201647391\surefirebooter-20260111014923533_3.jar C:\Users\USER\AppData\Local\Temp\surefire5045903009201647391 2026-01-11T01-49-23_141-jvmRun1 surefire-20260111014923533_1tmp surefire_0-20260111014923533_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\USER\IdeaProjects\AlbaniaCampAutomatedTests\target\test-classes;C:\Users\USER\IdeaProjects\AlbaniaCampAutomatedTests\target\classes;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-java\4.27.0\selenium-java-4.27.0.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-api\4.27.0\selenium-api-4.27.0.jar;C:\Users\USER\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-chrome-driver\4.27.0\selenium-chrome-driver-4.27.0.jar;C:\Users\USER\.m2\repository\com\google\auto\service\auto-service-annotations\1.1.1\auto-service-annotations-1.1.1.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-chromium-driver\4.27.0\selenium-chromium-driver-4.27.0.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-json\4.27.0\selenium-json-4.27.0.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-manager\4.27.0\selenium-manager-4.27.0.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v129\4.27.0\selenium-devtools-v129-4.27.0.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v130\4.27.0\selenium-devtools-v130-4.27.0.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v131\4.27.0\selenium-devtools-v131-4.27.0.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v85\4.27.0\selenium-devtools-v85-4.27.0.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-edge-driver\4.27.0\selenium-edge-driver-4.27.0.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-firefox-driver\4.27.0\selenium-firefox-driver-4.27.0.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-http\4.27.0\selenium-http-4.27.0.jar;C:\Users\USER\.m2\repository\dev\failsafe\failsafe\3.3.2\failsafe-3.3.2.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-ie-driver\4.27.0\selenium-ie-driver-4.27.0.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-remote-driver\4.27.0\selenium-remote-driver-4.27.0.jar;C:\Users\USER\.m2\repository\com\google\guava\guava\33.3.1-jre\guava-33.3.1-jre.jar;C:\Users\USER\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\USER\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\USER\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\USER\.m2\repository\org\checkerframework\checker-qual\3.43.0\checker-qual-3.43.0.jar;C:\Users\USER\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\USER\.m2\repository\io\opentelemetry\semconv\opentelemetry-semconv\1.25.0-alpha\opentelemetry-semconv-1.25.0-alpha.jar;C:\Users\USER\.m2\repository\io\opentelemetry\opentelemetry-api\1.44.1\opentelemetry-api-1.44.1.jar;C:\Users\USER\.m2\repository\io\opentelemetry\opentelemetry-context\1.44.1\opentelemetry-context-1.44.1.jar;C:\Users\USER\.m2\repository\io\opentelemetry\opentelemetry-exporter-logging\1.44.1\opentelemetry-exporter-logging-1.44.1.jar;C:\Users\USER\.m2\repository\io\opentelemetry\opentelemetry-sdk-common\1.44.1\opentelemetry-sdk-common-1.44.1.jar;C:\Users\USER\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure-spi\1.44.1\opentelemetry-sdk-extension-autoconfigure-spi-1.44.1.jar;C:\Users\USER\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure\1.44.1\opentelemetry-sdk-extension-autoconfigure-1.44.1.jar;C:\Users\USER\.m2\repository\io\opentelemetry\opentelemetry-api-incubator\1.44.1-alpha\opentelemetry-api-incubator-1.44.1-alpha.jar;C:\Users\USER\.m2\repository\io\opentelemetry\opentelemetry-sdk-trace\1.44.1\opentelemetry-sdk-trace-1.44.1.jar;C:\Users\USER\.m2\repository\io\opentelemetry\opentelemetry-sdk\1.44.1\opentelemetry-sdk-1.44.1.jar;C:\Users\USER\.m2\repository\io\opentelemetry\opentelemetry-sdk-metrics\1.44.1\opentelemetry-sdk-metrics-1.44.1.jar;C:\Users\USER\.m2\repository\io\opentelemetry\opentelemetry-sdk-logs\1.44.1\opentelemetry-sdk-logs-1.44.1.jar;C:\Users\USER\.m2\repository\net\bytebuddy\byte-buddy\1.15.10\byte-buddy-1.15.10.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-os\4.27.0\selenium-os-4.27.0.jar;C:\Users\USER\.m2\repository\org\apache\commons\commons-exec\1.4.0\commons-exec-1.4.0.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-safari-driver\4.27.0\selenium-safari-driver-4.27.0.jar;C:\Users\USER\.m2\repository\org\seleniumhq\selenium\selenium-support\4.27.0\selenium-support-4.27.0.jar;C:\Users\USER\.m2\repository\io\github\bonigarcia\webdrivermanager\5.9.2\webdrivermanager-5.9.2.jar;C:\Users\USER\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;C:\Users\USER\.m2\repository\com\google\code\gson\gson\2.11.0\gson-2.11.0.jar;C:\Users\USER\.m2\repository\com\google\errorprone\error_prone_annotations\2.27.0\error_prone_annotations-2.27.0.jar;C:\Users\USER\.m2\repository\com\github\docker-java\docker-java\3.4.0\docker-java-3.4.0.jar;C:\Users\USER\.m2\repository\com\github\docker-java\docker-java-core\3.4.0\docker-java-core-3.4.0.jar;C:\Users\USER\.m2\repository\com\github\docker-java\docker-java-api\3.4.0\docker-java-api-3.4.0.jar;C:\Users\USER\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.10.3\jackson-annotations-2.10.3.jar;C:\Users\USER\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.10.3\jackson-databind-2.10.3.jar;C:\Users\USER\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.10.3\jackson-core-2.10.3.jar;C:\Users\USER\.m2\repository\org\slf4j\jcl-over-slf4j\1.7.30\jcl-over-slf4j-1.7.30.jar;C:\Users\USER\.m2\repository\com\github\docker-java\docker-java-transport-httpclient5\3.4.0\docker-java-transport-httpclient5-3.4.0.jar;C:\Users\USER\.m2\repository\com\github\docker-java\docker-java-transport\3.4.0\docker-java-transport-3.4.0.jar;C:\Users\USER\.m2\repository\net\java\dev\jna\jna\5.13.0\jna-5.13.0.jar;C:\Users\USER\.m2\repository\org\brotli\dec\0.1.2\dec-0.1.2.jar;C:\Users\USER\.m2\repository\org\apache\commons\commons-lang3\3.15.0\commons-lang3-3.15.0.jar;C:\Users\USER\.m2\repository\org\apache\commons\commons-compress\1.26.2\commons-compress-1.26.2.jar;C:\Users\USER\.m2\repository\commons-codec\commons-codec\1.17.0\commons-codec-1.17.0.jar;C:\Users\USER\.m2\repository\org\apache\httpcomponents\client5\httpclient5\5.2.1\httpclient5-5.2.1.jar;C:\Users\USER\.m2\repository\org\apache\httpcomponents\core5\httpcore5\5.2\httpcore5-5.2.jar;C:\Users\USER\.m2\repository\org\apache\httpcomponents\core5\httpcore5-h2\5.2\httpcore5-h2-5.2.jar;C:\Users\USER\.m2\repository\org\testng\testng\7.8.0\testng-7.8.0.jar;C:\Users\USER\.m2\repository\com\beust\jcommander\1.82\jcommander-1.82.jar;C:\Users\USER\.m2\repository\org\webjars\jquery\3.6.1\jquery-3.6.1.jar;C:\Users\USER\.m2\repository\com\aventstack\extentreports\5.1.1\extentreports-5.1.1.jar;C:\Users\USER\.m2\repository\io\reactivex\rxjava3\rxjava\3.1.6\rxjava-3.1.6.jar;C:\Users\USER\.m2\repository\org\reactivestreams\reactive-streams\1.0.4\reactive-streams-1.0.4.jar;C:\Users\USER\.m2\repository\org\freemarker\freemarker\2.3.32\freemarker-2.3.32.jar;C:\Users\USER\.m2\repository\org\projectlombok\lombok\1.18.26\lombok-1.18.26.jar;C:\Users\USER\.m2\repository\commons-io\commons-io\2.15.1\commons-io-2.15.1.jar;C:\Users\USER\.m2\repository\org\slf4j\slf4j-simple\2.0.9\slf4j-simple-2.0.9.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\USER\AppData\Local\Temp\surefire5618546832104024103\surefirebooter-20260110223619325_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\USER\AppData\Local\Temp\surefire5045903009201647391\surefirebooter-20260111014923533_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.11+7-LTS-207"/>
@@ -57,49 +57,100 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testCreateAccount" classname="tests.AuthenticationTests" time="6.251">
-    <system-err><![CDATA[[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 143.0.7499.192 (resolved driver for Chrome 143)
-[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\USER\.cache\selenium\chromedriver\win64\143.0.7499.192\chromedriver.exe
-Jan 10, 2026 10:36:25 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find CDP implementation matching 143
-Jan 10, 2026 10:36:25 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-WARNING: Unable to find version of CDP to use for 143.0.7499.192. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.27.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-]]></system-err>
-  </testcase>
-  <testcase name="testSignIn" classname="tests.AuthenticationTests" time="8.057">
-    <system-err><![CDATA[[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 143.0.7499.192 (resolved driver for Chrome 143)
-[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\USER\.cache\selenium\chromedriver\win64\143.0.7499.192\chromedriver.exe
-Jan 10, 2026 10:36:39 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find CDP implementation matching 143
-Jan 10, 2026 10:36:39 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-WARNING: Unable to find version of CDP to use for 143.0.7499.192. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.27.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-]]></system-err>
-  </testcase>
-  <testcase name="testCheckHoverStyle" classname="tests.EcommerceTests" time="4.978">
-    <system-err><![CDATA[[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 143.0.7499.192 (resolved driver for Chrome 143)
-[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\USER\.cache\selenium\chromedriver\win64\143.0.7499.192\chromedriver.exe
-Jan 10, 2026 10:36:55 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find CDP implementation matching 143
-Jan 10, 2026 10:36:55 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-WARNING: Unable to find version of CDP to use for 143.0.7499.192. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.27.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-]]></system-err>
-  </testcase>
-  <testcase name="testCheckSaleProductsStyle" classname="tests.EcommerceTests" time="5.171">
-    <system-out><![CDATA[Final price color: rgba(51, 153, 204, 1), textDecoration: none
-Final price color: rgba(51, 153, 204, 1), textDecoration: none
-Final price color: rgba(51, 153, 204, 1), textDecoration: none
-Final price color: rgba(51, 153, 204, 1), textDecoration: none
+  <testcase name="testCreateAccount" classname="tests.AuthenticationTests" time="6.889">
+    <system-out><![CDATA[
+[SETUP] Starting setup for: testCreateAccount
+[SETUP] Completed setup for: testCreateAccount (took 8192ms)
+
+
+TEST 1 STARTED: Create an Account
+Description: Register a new user account
+
+TEST 1 COMPLETED SUCCESSFULLY
+
 ]]></system-out>
     <system-err><![CDATA[[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 143.0.7499.192 (resolved driver for Chrome 143)
 [main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\USER\.cache\selenium\chromedriver\win64\143.0.7499.192\chromedriver.exe
-Jan 10, 2026 10:37:12 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Jan 11, 2026 1:49:30 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 143
-Jan 10, 2026 10:37:12 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Jan 11, 2026 1:49:30 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 143.0.7499.192. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.27.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
 ]]></system-err>
   </testcase>
-  <testcase name="testCheckPageFilters" classname="tests.EcommerceTests" time="44.204">
-    <system-out><![CDATA[Found 9 color filter options
+  <testcase name="testSignIn" classname="tests.AuthenticationTests" time="5.66">
+    <system-out><![CDATA[
+[SETUP] Starting setup for: testSignIn
+[SETUP] Completed setup for: testSignIn (took 5222ms)
+
+
+TEST 2 STARTED: Sign In
+Description: Login with existing credentials
+
+TEST 2 COMPLETED SUCCESSFULLY
+
+]]></system-out>
+    <system-err><![CDATA[[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 143.0.7499.192 (resolved driver for Chrome 143)
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\USER\.cache\selenium\chromedriver\win64\143.0.7499.192\chromedriver.exe
+Jan 11, 2026 1:49:43 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 143
+Jan 11, 2026 1:49:43 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 143.0.7499.192. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.27.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+]]></system-err>
+  </testcase>
+  <testcase name="testCheckHoverStyle" classname="tests.EcommerceTests" time="4.776">
+    <system-out><![CDATA[
+[SETUP] Starting setup for: testCheckHoverStyle
+[SETUP] Completed setup for: testCheckHoverStyle (took 7384ms)
+
+
+TEST 3 STARTED: Check hover style
+Description: Verify hover effects on products
+
+TEST 3 COMPLETED SUCCESSFULLY
+
+]]></system-out>
+    <system-err><![CDATA[[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 143.0.7499.192 (resolved driver for Chrome 143)
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\USER\.cache\selenium\chromedriver\win64\143.0.7499.192\chromedriver.exe
+Jan 11, 2026 1:49:54 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 143
+Jan 11, 2026 1:49:54 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 143.0.7499.192. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.27.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+]]></system-err>
+  </testcase>
+  <testcase name="testCheckSaleProductsStyle" classname="tests.EcommerceTests" time="5.16">
+    <system-out><![CDATA[
+[SETUP] Starting setup for: testCheckSaleProductsStyle
+[SETUP] Completed setup for: testCheckSaleProductsStyle (took 5631ms)
+
+
+TEST 4 STARTED: Check sale products style
+Description: Verify sale product price styling
+
+Final price color: rgba(51, 153, 204, 1), textDecoration: none
+Final price color: rgba(51, 153, 204, 1), textDecoration: none
+Final price color: rgba(51, 153, 204, 1), textDecoration: none
+Final price color: rgba(51, 153, 204, 1), textDecoration: none
+TEST 4 COMPLETED SUCCESSFULLY
+
+]]></system-out>
+    <system-err><![CDATA[[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 143.0.7499.192 (resolved driver for Chrome 143)
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\USER\.cache\selenium\chromedriver\win64\143.0.7499.192\chromedriver.exe
+Jan 11, 2026 1:50:10 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 143
+Jan 11, 2026 1:50:10 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 143.0.7499.192. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.27.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+]]></system-err>
+  </testcase>
+  <testcase name="testCheckPageFilters" classname="tests.EcommerceTests" time="26.792">
+    <system-out><![CDATA[
+[SETUP] Starting setup for: testCheckPageFilters
+[SETUP] Completed setup for: testCheckPageFilters (took 7490ms)
+
+
+TEST 5 STARTED: Check page filters
+Description: Verify color and price filters work correctly
+
+Found 9 color filter options
 Checking color option: Black
 Found matching color: Black, href: https://ecommerce.tealiumdemo.com/men.html?color=20
 Clicked color filter using JavaScript: Black
@@ -120,43 +171,68 @@ Products reloaded, found 3 products
 Product 0 price: $75.0 (range: $0.0 - $99.99)
 Product 1 price: $75.0 (range: $0.0 - $99.99)
 Product 2 price: $75.0 (range: $0.0 - $99.99)
+TEST 5 COMPLETED SUCCESSFULLY
+
 ]]></system-out>
     <system-err><![CDATA[[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 143.0.7499.192 (resolved driver for Chrome 143)
 [main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\USER\.cache\selenium\chromedriver\win64\143.0.7499.192\chromedriver.exe
-Jan 10, 2026 10:37:29 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Jan 11, 2026 1:50:24 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 143
-Jan 10, 2026 10:37:29 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Jan 11, 2026 1:50:24 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 143.0.7499.192. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.27.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
 ]]></system-err>
   </testcase>
-  <testcase name="testCheckSorting" classname="tests.EcommerceTests" time="135.822">
-    <system-out><![CDATA[Re-logging in to ensure fresh session before wishlist operations
+  <testcase name="testCheckSorting" classname="tests.EcommerceTests" time="84.128">
+    <system-out><![CDATA[
+[SETUP] Starting setup for: testCheckSorting
+[SETUP] Completed setup for: testCheckSorting (took 5325ms)
+
+
+TEST 6 STARTED: Check Sorting
+Description: Verify sorting by price and add items to wishlist
+
+Re-logging in to ensure fresh session before wishlist operations
 Logged in successfully, navigating to women's page
+Attempting to add product 0 to wishlist
 Attempting to add product 0 to wishlist
 Clicked wishlist link for product 0
 Successfully added product 0 to wishlist
-Navigating to wishlist to verify first item was added
-Current URL: https://ecommerce.tealiumdemo.com/wishlist/index/index/wishlist_id/1933/
-Wishlist currently has 1 items
-Final wishlist count: 1 items
+Current URL after first add: https://ecommerce.tealiumdemo.com/wishlist/index/index/wishlist_id/1933/
+Navigating back to women's page to add second product
+Attempting to add product 1 to wishlist
+Attempting to add product 1 to wishlist
+Clicked wishlist link for product 1
+Successfully added product 1 to wishlist
+Navigating to wishlist to verify items
+Final wishlist count: 2 items
+TEST 6 COMPLETED SUCCESSFULLY
+
 ]]></system-out>
     <system-err><![CDATA[[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 143.0.7499.192 (resolved driver for Chrome 143)
 [main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\USER\.cache\selenium\chromedriver\win64\143.0.7499.192\chromedriver.exe
-Jan 10, 2026 10:38:24 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Jan 11, 2026 1:51:02 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 143
-Jan 10, 2026 10:38:24 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Jan 11, 2026 1:51:02 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 143.0.7499.192. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.27.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
 ]]></system-err>
   </testcase>
-  <testcase name="testShoppingCart" classname="tests.EcommerceTests" time="84.752">
+  <testcase name="testShoppingCart" classname="tests.EcommerceTests" time="64.712">
     <system-out><![CDATA[Preserving driver session after testCheckSorting
+
+[SETUP] Starting setup for: testShoppingCart
 Reusing existing driver session for testShoppingCart
+[SETUP] Completed setup for: testShoppingCart (took 0ms)
+
 Skipping login for testShoppingCart to preserve session state
-Wishlist has 1 items
-Adding wishlist item to cart (remaining: 1)
+
+TEST 7 STARTED: Shopping Cart test
+Description: Add wishlist items to cart and verify totals
+
+Wishlist has 2 items
+Adding wishlist item to cart (remaining: 2)
 Found wishlist item row
 Clicked Add to Cart button using JavaScript
-Current URL after add to cart: https://ecommerce.tealiumdemo.com/wishlist/index/configure/id/3517/
+Current URL after add to cart: https://ecommerce.tealiumdemo.com/wishlist/index/configure/id/3600/
 On product configure page - selecting options
 Scrolled to Color/Size section
 Found color select with 3 options
@@ -170,7 +246,27 @@ Attempting to disable validation and force form submission...
 Validation message found: * Required Fields
 Attempting to force-submit product form using JavaScript...
 Form submitted successfully, waiting for redirect...
-URL before: https://ecommerce.tealiumdemo.com/wishlist/index/configure/id/3517/
+URL before: https://ecommerce.tealiumdemo.com/wishlist/index/configure/id/3600/
+URL after: https://ecommerce.tealiumdemo.com/checkout/cart/
+Successfully added item to cart (URL changed)
+Adding wishlist item to cart (remaining: 1)
+Found wishlist item row
+Clicked Add to Cart button using JavaScript
+Current URL after add to cart: https://ecommerce.tealiumdemo.com/wishlist/index/configure/id/3601/
+On product configure page - selecting options
+Scrolled to Color/Size section
+Found color select with 2 options
+Selecting color: White (value: 22)
+Color selected successfully via JavaScript
+Found size select with 6 options
+Selecting size: XS (value: 81)
+Size selected successfully via JavaScript
+Selection status - Size: true, Color: true
+Attempting to disable validation and force form submission...
+Validation message found: * Required Fields
+Attempting to force-submit product form using JavaScript...
+Form submitted successfully, waiting for redirect...
+URL before: https://ecommerce.tealiumdemo.com/wishlist/index/configure/id/3601/
 URL after: https://ecommerce.tealiumdemo.com/checkout/cart/
 Successfully added item to cart (URL changed)
 Navigating directly to shopping cart...
@@ -180,19 +276,32 @@ URL indicates we're on cart page
 Cart is not empty, proceeding with update
 Updating quantity using JavaScript...
 Update triggered via JavaScript
-Cart has 1 items before total verification
-Price verification failed with exception: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //tfoot//tr[contains(@class,'last') or contains(@class,'grand-total')]//span[@class='price']' (tried for 20 second(s) with 500 milliseconds interval)
+Cart has 2 items before total verification
+Price verification failed with exception: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //tfoot//tr[contains(@class,'last') or contains(@class,'grand-total')]//span[@class='price']' (tried for 15 second(s) with 500 milliseconds interval)
 Skipping total verification as price elements may not be available
+TEST 7 COMPLETED SUCCESSFULLY
+
 ]]></system-out>
   </testcase>
-  <testcase name="testEmptyShoppingCart" classname="tests.EcommerceTests" time="43.85">
+  <testcase name="testEmptyShoppingCart" classname="tests.EcommerceTests" time="30.513">
     <system-out><![CDATA[Preserving driver session after testShoppingCart
+
+[SETUP] Starting setup for: testEmptyShoppingCart
 Reusing existing driver session for testEmptyShoppingCart
+[SETUP] Completed setup for: testEmptyShoppingCart (took 0ms)
+
 Skipping login for testEmptyShoppingCart to preserve session state
-Initial cart count for Test 8: 1
+
+TEST 8 STARTED: Empty Shopping Cart Test
+Description: Delete all cart items and verify empty cart message
+
+Initial cart count for Test 8: 2
+Delete button clicked successfully via JavaScript
 Delete button clicked successfully via JavaScript
 Final cart count after all deletions: 0
 Cart is empty (0 items) but empty message element not found - test passed
+TEST 8 COMPLETED SUCCESSFULLY
+
 ]]></system-out>
   </testcase>
 </testsuite>
