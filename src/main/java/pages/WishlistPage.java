@@ -77,21 +77,23 @@ public class WishlistPage extends BasePage {
                     }
                 }
 
-                // Wait a moment for selections to register
-                Thread.sleep(500);
+                // Wait for selections to register
+                waitHelper.waitShort(300);
 
                 // Click add to cart
                 WebElement addToCartBtn = item.findElement(By.xpath(".//button[@title='Add to Cart' or contains(@class,'btn-cart') or contains(text(),'Add to Cart')]"));
                 waitHelper.waitForElementClickable(addToCartBtn);
                 scrollToElement(addToCartBtn);
+
+                String currentUrl = driver.getCurrentUrl();
                 try {
                     addToCartBtn.click();
                 } catch (Exception e) {
                     js.executeScript("arguments[0].click();", addToCartBtn);
                 }
 
-                // Wait for add to cart to complete
-                Thread.sleep(2000);
+                // Wait for add to cart to complete (URL change or page update)
+                waitHelper.waitForUrlToChange(currentUrl);
             } catch (Exception e) {
                 System.out.println("Error adding item to cart: " + e.getMessage());
                 e.printStackTrace();

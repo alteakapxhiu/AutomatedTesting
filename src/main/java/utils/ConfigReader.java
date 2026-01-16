@@ -30,4 +30,12 @@ public class ConfigReader {
     public static String getBaseUrl() {
         return properties.getProperty("base.url");
     }
+
+    public static String getTestEmail() {
+        return properties.getProperty("test.email");
+    }
+
+    public static String getTestPassword() {
+        return properties.getProperty("test.password");
+    }
 }

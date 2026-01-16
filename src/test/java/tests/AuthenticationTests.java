@@ -83,40 +83,16 @@ public class AuthenticationTests extends BaseTest {
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
 
-        // Use credentials from Test 1 if available, otherwise use predefined credentials
-        String emailToUse = (testEmail != null && !testEmail.isEmpty()) ? testEmail : "altea_kapxhiu@universitetipolis.edu.al";
-        String passwordToUse = (testPassword != null && !testPassword.isEmpty()) ? testPassword : "AlteaPolis2004";
+        // Use credentials from Test 1 if available, otherwise use config properties
+        String emailToUse = (testEmail != null && !testEmail.isEmpty()) ? testEmail : utils.ConfigReader.getTestEmail();
+        String passwordToUse = (testPassword != null && !testPassword.isEmpty()) ? testPassword : utils.ConfigReader.getTestPassword();
 
         // Step 1: Navigate to homepage
         homePage.navigateToHomePage();
-
-        // Wait for page to fully load
         Assert.assertTrue(homePage.isHomePageLoaded(), "Home page should be loaded");
 
-        // Additional wait for page to stabilize
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        // Step 2: Click on Account then Sign in (with fallback to direct navigation)
-        try {
-            homePage.clickSignIn();
-        } catch (Exception e) {
-            // Fallback: Navigate directly to login page
-            System.out.println("Failed to click Sign In link, navigating directly to login page");
-            loginPage.navigateToLoginPage();
-        }
-
-        // Wait for login page to load
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        // Verify login page loaded
+        // Step 2: Click on Account then Sign in
+        homePage.clickSignIn();
         Assert.assertTrue(loginPage.isLoginPageLoaded(), "Login page should be loaded");
 
         // Step 3: Login with credentials

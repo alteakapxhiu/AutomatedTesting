@@ -73,12 +73,8 @@ public class BasePage {
     public void clickAccountMenu() {
         waitHelper.waitForElementClickable(accountMenu);
         accountMenu.click();
-        // Wait a moment for dropdown to appear
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // Wait for dropdown to appear
+        waitHelper.waitForElementPresent(By.xpath("//div[@id='header-account']//ul[@class='links']"));
     }
 
     public void clickRegister() {
@@ -128,11 +124,8 @@ public class BasePage {
         }
 
         // Wait for wishlist page to load
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitHelper.waitForUrlContains("wishlist");
+        waitHelper.waitForPageLoad();
     }
 
     public void hoverOverWomenAndClickViewAll() {
@@ -143,11 +136,7 @@ public class BasePage {
         actions.moveToElement(womenMenu).perform();
 
         // Wait for submenu to appear after hover
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitHelper.waitForElementPresent(By.xpath("//nav[@id='nav']//a[contains(text(),'View All Women')]"));
 
         // Find the View All link dynamically after hover
         try {
@@ -162,11 +151,7 @@ public class BasePage {
         }
 
         // Wait for page to load
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitHelper.waitForPageLoad();
     }
 
     public void hoverOverMenAndClickViewAll() {
@@ -177,11 +162,7 @@ public class BasePage {
         actions.moveToElement(menMenu).perform();
 
         // Wait for submenu to appear after hover
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitHelper.waitForElementPresent(By.xpath("//nav[@id='nav']//a[contains(text(),'View All Men')]"));
 
         // Find the View All link dynamically after hover
         try {
@@ -196,11 +177,7 @@ public class BasePage {
         }
 
         // Wait for page to load
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitHelper.waitForPageLoad();
     }
 
     public void hoverOverSaleAndClickViewAll() {
@@ -211,11 +188,7 @@ public class BasePage {
         actions.moveToElement(saleMenu).perform();
 
         // Wait for submenu to appear after hover
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitHelper.waitForElementPresent(By.xpath("//nav[@id='nav']//a[contains(text(),'View All Sale')]"));
 
         // Find the View All link dynamically after hover
         try {
@@ -230,11 +203,7 @@ public class BasePage {
         }
 
         // Wait for page to load
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitHelper.waitForPageLoad();
     }
 
     public void clickShoppingCart() {
@@ -255,7 +224,7 @@ public class BasePage {
             }
 
             // Wait for dropdown to open
-            Thread.sleep(1000);
+            waitHelper.waitForElementPresent(By.xpath("//a[contains(text(),'View Cart') or contains(text(),'Go to Cart') or contains(@href,'/checkout/cart')]"));
 
             // Now click "View Cart" or "Go to Cart" link inside the dropdown
             try {
@@ -286,11 +255,8 @@ public class BasePage {
         }
 
         // Wait for cart page to load
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
+        waitHelper.waitForUrlContains("checkout/cart");
+        waitHelper.waitForPageLoad();
 
         System.out.println("After cart navigation, URL: " + driver.getCurrentUrl());
     }
@@ -306,12 +272,8 @@ public class BasePage {
 
     public String getAccountMenuText() {
         clickAccountMenu();
-        // Get the text from the dropdown menu after clicking
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // Wait for dropdown menu to be visible
+        waitHelper.waitForElementPresent(By.xpath("//div[@id='header-account']//ul[@class='links']"));
 
         // Check if wishlist link contains item count
         if (waitHelper.isElementDisplayed(myWishListLink)) {

@@ -111,11 +111,7 @@ public class ProductListPage extends BasePage {
 
         if (!isColorFilterExpanded()) {
             colorFilterHeader.click();
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            waitHelper.waitForElementPresent(By.xpath("//dl[@id='narrow-by-list']//dt[contains(text(),'Color')]/following-sibling::dd[1]//a"));
         }
 
         // Find color filter options dynamically - use [1] to get only immediate next dd element
@@ -166,37 +162,26 @@ public class ProductListPage extends BasePage {
                 }
 
                 // Wait for page to reload after color filter
-                try {
-                    Thread.sleep(500);
+                waitHelper.waitForUrlToChange(currentUrl);
+                String newUrl = driver.getCurrentUrl();
+                System.out.println("Color filter applied, new URL: " + newUrl);
 
-                    // Wait for URL to change
-                    int attempts = 0;
-                    while (driver.getCurrentUrl().equals(currentUrl) && attempts < 15) {
-                        Thread.sleep(500);
-                        attempts++;
-                    }
+                if (newUrl.equals(currentUrl)) {
+                    System.out.println("WARNING: URL did not change after color filter click!");
+                }
 
-                    String newUrl = driver.getCurrentUrl();
-                    System.out.println("Color filter applied, new URL: " + newUrl);
+                // Wait for products to reload
+                waitHelper.waitForPageLoad();
+                waitHelper.waitForElementPresent(By.xpath("//ul[contains(@class,'products-grid')]//li[contains(@class,'item')]"));
 
-                    if (newUrl.equals(currentUrl)) {
-                        System.out.println("WARNING: URL did not change after color filter click!");
-                    }
-
-                    // Wait for products to reload
-                    Thread.sleep(1500);
-
-                    // Wait for product grid to be visible
-                    List<WebElement> products = driver.findElements(
-                        By.xpath("//ul[contains(@class,'products-grid')]//li[contains(@class,'item')]"));
-                    if (!products.isEmpty()) {
-                        waitHelper.waitForElementVisible(products.get(0));
-                        System.out.println("Products reloaded after color filter, found " + products.size() + " products");
-                    } else {
-                        System.out.println("WARNING: No products found after color filter!");
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                // Wait for product grid to be visible
+                List<WebElement> products = driver.findElements(
+                    By.xpath("//ul[contains(@class,'products-grid')]//li[contains(@class,'item')]"));
+                if (!products.isEmpty()) {
+                    waitHelper.waitForElementVisible(products.get(0));
+                    System.out.println("Products reloaded after color filter, found " + products.size() + " products");
+                } else {
+                    System.out.println("WARNING: No products found after color filter!");
                 }
 
                 break;
@@ -210,22 +195,14 @@ public class ProductListPage extends BasePage {
 
     public void clickPriceFilter(int index) {
         // First ensure page is stable after any previous filter
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitHelper.waitForPageLoad();
 
         waitHelper.waitForElementClickable(priceFilterHeader);
         scrollToElement(priceFilterHeader);
 
         if (!isPriceFilterExpanded()) {
             priceFilterHeader.click();
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            waitHelper.waitForElementPresent(By.xpath("//dl[@id='narrow-by-list']//dt[contains(text(),'Price')]/following-sibling::dd[1]//a"));
         }
 
         // Find price filter options dynamically - use [1] to get only the immediate next dd element
@@ -279,55 +256,28 @@ public class ProductListPage extends BasePage {
             }
 
             // Wait for page to navigate - check both URL change AND body class
-            try {
-                int attempts = 0;
-                boolean urlChanged = false;
-                while (attempts < 20) {
-                    Thread.sleep(500);
-                    String newUrl = driver.getCurrentUrl();
+            boolean urlChanged = waitHelper.waitForUrlToChange(currentUrl);
+            String newUrl = driver.getCurrentUrl();
 
-                    // Check if URL contains the expected parameters
-                    if (newUrl.contains("price=") && !newUrl.equals(currentUrl)) {
-                        urlChanged = true;
-                        System.out.println("URL successfully changed to: " + newUrl);
-                        break;
-                    }
+            if (urlChanged && (newUrl.contains("price=") || newUrl.contains("men.html"))) {
+                System.out.println("URL successfully changed to: " + newUrl);
+            } else {
+                System.out.println("WARNING: URL did not change as expected");
+                System.out.println("Final URL: " + driver.getCurrentUrl());
+            }
 
-                    // Check if we're still on a category page (not homepage)
-                    try {
-                        String bodyClass = driver.findElement(By.tagName("body")).getAttribute("class");
-                        if (bodyClass.contains("catalog-category-view") && newUrl.contains("men.html")) {
-                            System.out.println("Page loaded with URL: " + newUrl);
-                            System.out.println("Body class confirms category page: " + bodyClass);
-                            urlChanged = true;
-                            break;
-                        }
-                    } catch (Exception e) {
-                        // Body element not found, keep waiting
-                    }
+            // Wait for products to reload
+            waitHelper.waitForPageLoad();
+            waitHelper.waitForElementPresent(By.xpath("//ul[contains(@class,'products-grid')]//li[contains(@class,'item')]"));
 
-                    attempts++;
-                }
-
-                if (!urlChanged) {
-                    System.out.println("WARNING: URL did not change as expected after " + (attempts * 500) + "ms");
-                    System.out.println("Final URL: " + driver.getCurrentUrl());
-                }
-
-                // Wait for products to reload
-                Thread.sleep(1500);
-
-                // Wait for product grid to be visible
-                List<WebElement> products = driver.findElements(
-                    By.xpath("//ul[contains(@class,'products-grid')]//li[contains(@class,'item')]"));
-                if (!products.isEmpty()) {
-                    waitHelper.waitForElementVisible(products.get(0));
-                    System.out.println("Products reloaded, found " + products.size() + " products");
-                } else {
-                    System.out.println("WARNING: No products found after price filter");
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            // Wait for product grid to be visible
+            List<WebElement> products = driver.findElements(
+                By.xpath("//ul[contains(@class,'products-grid')]//li[contains(@class,'item')]"));
+            if (!products.isEmpty()) {
+                waitHelper.waitForElementVisible(products.get(0));
+                System.out.println("Products reloaded, found " + products.size() + " products");
+            } else {
+                System.out.println("WARNING: No products found after price filter");
             }
         }
     }
@@ -403,7 +353,7 @@ public class ProductListPage extends BasePage {
 
                     // Scroll to product
                     js.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", product);
-                    Thread.sleep(1000);
+                    waitHelper.waitShort(500);
 
                     // Find and click wishlist link
                     List<WebElement> wishlistLinks = product.findElements(
@@ -411,7 +361,7 @@ public class ProductListPage extends BasePage {
 
                     if (wishlistLinks.isEmpty()) {
                         System.out.println("No wishlist link found for product " + index + " (attempt " + (attempt + 1) + ")");
-                        Thread.sleep(1000);
+                        waitHelper.waitShort(500);
                         continue;
                     }
 
@@ -419,25 +369,24 @@ public class ProductListPage extends BasePage {
 
                     // Ensure link is visible and clickable
                     js.executeScript("arguments[0].scrollIntoView(true);", wishlistLink);
-                    Thread.sleep(500);
+                    waitHelper.waitForElementClickable(wishlistLink);
+
+                    // Store current URL to detect navigation
+                    String currentUrl = driver.getCurrentUrl();
 
                     // Click using JavaScript
                     js.executeScript("arguments[0].click();", wishlistLink);
                     System.out.println("Clicked wishlist link for product " + index);
 
-                    // Wait for wishlist action to complete
-                    Thread.sleep(5000);
+                    // Wait for wishlist action to complete (URL change or success message)
+                    waitHelper.waitForUrlToChange(currentUrl);
 
                     added = true;
                     System.out.println("Successfully added product " + index + " to wishlist");
 
                 } catch (Exception e) {
                     System.out.println("Attempt " + (attempt + 1) + " failed for product " + index + ": " + e.getMessage());
-                    try {
-                        Thread.sleep(1500);
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
-                    }
+                    waitHelper.waitShort(1000);
                 }
             }
 
