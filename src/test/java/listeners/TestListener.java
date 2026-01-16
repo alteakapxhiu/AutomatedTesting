@@ -8,7 +8,7 @@ import tests.BaseTest;
 import utils.ScreenshotUtil;
 
 /**
- * TestListener - Dëgjon ngjarjet e testeve dhe kryen veprime (screenshot në dështim)
+ * TestListener - Degjon ngjarjet e testeve dhe kryen veprime (screenshot ne deshtim)
  */
 public class TestListener implements ITestListener {
 

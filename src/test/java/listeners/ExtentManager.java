@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * ExtentManager - Menaxhon raportet HTML të testeve (ExtentReports)
+ * ExtentManager - Menaxhon raportet HTML te testeve (ExtentReports)
  */
 public class ExtentManager {
     private static ExtentReports extent;
@@ -26,14 +26,14 @@ public class ExtentManager {
 
         ExtentSparkReporter sparkReporter = new ExtentSparkReporter(reportPath);
         sparkReporter.config().setTheme(Theme.DARK);
-        sparkReporter.config().setDocumentTitle("YelpCamp Automation Report");
-        sparkReporter.config().setReportName("YelpCamp Test Execution Report");
+        sparkReporter.config().setDocumentTitle("Tealium Automation Report");
+        sparkReporter.config().setReportName("Tealium Test Execution Report");
         sparkReporter.config().setTimeStampFormat("EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'");
 
         extent = new ExtentReports();
         extent.attachReporter(sparkReporter);
 
-        extent.setSystemInfo("Application", "YelpCamp");
+        extent.setSystemInfo("Application", "Tealium");
         extent.setSystemInfo("Environment", "Local");
         extent.setSystemInfo("Tester", "Automation Team");
 

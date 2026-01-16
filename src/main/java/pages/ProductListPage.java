@@ -105,6 +105,99 @@ public class ProductListPage extends BasePage {
         return "";
     }
 
+    /**
+     * Get the hover container element within a product (the element that shows on hover)
+     * This could be an "actions" div or "hover-box" that appears on hover
+     */
+    public WebElement getProductHoverElement(int index) {
+        if (index < productItems.size()) {
+            WebElement product = productItems.get(index);
+            try {
+                // Try to find the actions/hover element within the product
+                return product.findElement(By.xpath(".//div[contains(@class,'actions')] | .//ul[contains(@class,'add-to-links')]"));
+            } catch (Exception e) {
+                return null;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Check if hover element is displayed (visible) after hovering
+     */
+    public boolean isHoverElementDisplayed(int index) {
+        WebElement hoverElement = getProductHoverElement(index);
+        if (hoverElement != null) {
+            try {
+                return hoverElement.isDisplayed();
+            } catch (Exception e) {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Get product image element to check for hover effects
+     */
+    public WebElement getProductImage(int index) {
+        if (index < productItems.size()) {
+            WebElement product = productItems.get(index);
+            try {
+                return product.findElement(By.xpath(".//img[@class='product-image-photo']"));
+            } catch (Exception e) {
+                return null;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Check if product has hover effect by comparing opacity or transform before/after hover
+     * Returns true if any hover effect is detected
+     */
+    public boolean hasHoverEffect(int index) {
+        if (index >= productItems.size()) {
+            return false;
+        }
+
+        WebElement product = productItems.get(index);
+
+        // Get initial state
+        String initialOpacity = product.getCssValue("opacity");
+        String initialTransform = product.getCssValue("transform");
+        String initialBoxShadow = product.getCssValue("box-shadow");
+
+        // Get hover element visibility before hover
+        boolean hoverElementVisibleBefore = isHoverElementDisplayed(index);
+
+        // Perform hover
+        hoverOverProduct(index);
+
+        // Wait a moment for CSS transition
+        waitHelper.waitShort(300);
+
+        // Get state after hover
+        String afterOpacity = product.getCssValue("opacity");
+        String afterTransform = product.getCssValue("transform");
+        String afterBoxShadow = product.getCssValue("box-shadow");
+        boolean hoverElementVisibleAfter = isHoverElementDisplayed(index);
+
+        // Check if any style changed or hover element became visible
+        boolean opacityChanged = !initialOpacity.equals(afterOpacity);
+        boolean transformChanged = !initialTransform.equals(afterTransform);
+        boolean boxShadowChanged = !initialBoxShadow.equals(afterBoxShadow);
+        boolean hoverElementAppeared = !hoverElementVisibleBefore && hoverElementVisibleAfter;
+
+        System.out.println("Hover effect check for product " + index + ":");
+        System.out.println("  Opacity changed: " + opacityChanged + " (" + initialOpacity + " -> " + afterOpacity + ")");
+        System.out.println("  Transform changed: " + transformChanged);
+        System.out.println("  Box shadow changed: " + boxShadowChanged);
+        System.out.println("  Hover element appeared: " + hoverElementAppeared);
+
+        return opacityChanged || transformChanged || boxShadowChanged || hoverElementAppeared;
+    }
+
     public void clickColorFilter(String color) {
         waitHelper.waitForElementClickable(colorFilterHeader);
         scrollToElement(colorFilterHeader);
@@ -457,17 +550,19 @@ public class ProductListPage extends BasePage {
             boolean notStrikethrough = !textDecoration.contains("line-through") &&
                                       !textDecorationLine.contains("line-through");
 
-            // Check for blue color (many shades)
+            // New Fix : Check for blue color (many shades of blue)
             boolean isBlue = color.contains("blue") ||
                            color.contains("rgb(0, 0, 255)") ||
                            color.contains("rgb(21, 101, 192)") ||
+                           color.contains("rgb(51, 153, 204)") || // Common e-commerce blue
                            color.matches(".*rgb\\(\\s*[0-9]{1,2}\\s*,\\s*[0-9]{1,3}\\s*,\\s*1[5-9][0-9].*") || // bluish
                            color.matches(".*rgb\\(\\s*[0-9]{1,2}\\s*,\\s*[0-9]{1,3}\\s*,\\s*2[0-4][0-9].*"); // bluish
 
-            System.out.println("Final price color: " + color + ", textDecoration: " + textDecoration);
+            System.out.println("Final price - Color: " + color + ", Is Blue: " + isBlue +
+                             ", Not Strikethrough: " + notStrikethrough);
 
-            // As long as it's not strikethrough, accept it (color checking can be strict)
-            return notStrikethrough;
+            // Verify BOTH conditions: not strikethrough AND blue color
+            return notStrikethrough && isBlue;
         } catch (Exception e) {
             System.out.println("Error checking final price: " + e.getMessage());
             return false;

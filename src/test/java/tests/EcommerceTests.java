@@ -35,22 +35,23 @@ public class EcommerceTests extends BaseTest {
 
     /**
      * Test 3: Check hover style
+     * Verifies that hovering over a product shows visual feedback (hover effects)
      */
     @Test(priority = 3, description = "Test 3: Check hover style")
     public void testCheckHoverStyle() {
         homePage = new HomePage(driver);
         productListPage = new ProductListPage(driver);
 
+        // Step 1: Navigate to women's products
         homePage.hoverOverWomenAndClickViewAll();
 
         int productCount = productListPage.getProductCount();
         Assert.assertTrue(productCount > 0, "Products should be displayed");
 
-        productListPage.hoverOverProduct(0);
-
-        int productCountAfterHover = productListPage.getProductCount();
-        Assert.assertEquals(productCountAfterHover, productCount,
-                "Product count should remain the same after hover");
+        // New Fixed: Hover over a product and verify style changes
+        boolean hasHoverEffect = productListPage.hasHoverEffect(0);
+        Assert.assertTrue(hasHoverEffect,
+                "Product should show hover effect (opacity, shadow, or action buttons)");
     }
 
     /**
